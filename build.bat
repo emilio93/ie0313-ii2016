@@ -25,8 +25,8 @@ CD %compile_folder%
 
 (for %%a in (%tareas%) do (
   CD %%a
-  pdflatex %%a -interaction=nonstopmode -output-directory=..\..\build || CD .. && ECHO could not compile && EXIT /B 1
-  pdflatex %%a -interaction=nonstopmode -output-directory=..\..\build || CD .. && ECHO could not compile && EXIT /B 1
+  pdflatex %%a -interaction=nonstopmode -output-directory=..\..\build || CD ..\.. && ECHO could not compile && EXIT /B 1
+  pdflatex %%a -interaction=nonstopmode -output-directory=..\..\build || CD ..\.. && ECHO could not compile && EXIT /B 1
   CD ..
 ))
 

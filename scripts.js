@@ -1,6 +1,6 @@
 $(document).ready(function() {
   loadHome();
-  loadLisence();
+  loadLicensee();
   showPage();
 
   $('nav>ul>a').click(function(){
@@ -19,7 +19,7 @@ $(document).ready(function() {
     .fail(function() {$('#readme').html(marked('## Inicio\nNo se pudo cargar contenido.'));})
   }
 
-  function loadLisence() {
+  function loadLicensee() {
     $('#license').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
     $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/LICENSE', {})
     .then(function(data) {$('#license').html('<pre>' + data + '</pre>');})

@@ -1,3 +1,3 @@
-## Tareas
+## Trabajos
 
-Por el momento no existen tareas.
+Por el momento no existen trabajos.

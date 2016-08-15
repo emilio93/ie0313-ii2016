@@ -20,7 +20,7 @@ $(document).ready(function() {
   }
 
   function loadLisence() {
-    $('#readme').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
+    $('#license').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
     $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/LICENSE', {})
     .then(function(data) {$('#license').html('<pre>' + data + '</pre>');})
     .fail(function() {$('#license').html(marked('## Licencia\nNo se pudo cargar la licencia.'));})

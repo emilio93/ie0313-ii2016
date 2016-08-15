@@ -71,6 +71,10 @@ nav a:first-child > li {
   border-top-left-radius: 5px;
 }
 
+section {
+  display: none;
+}
+
 #main-container {
   margin-top: 120px;
   margin-bottom: 40px;

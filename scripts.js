@@ -3,9 +3,14 @@ $(document).ready(function() {
   loadLisence();
   showPage();
 
+  $('nav>ul>a').click(function(){
+    setTimeout(function() {window.scrollTo(0, 0);}, 1);
+  });
+
   $(window).on('hashchange',function(){
     showPage(window.location.hash.substr(1));
   });
+
 
   function loadHome() {
     $('#readme').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');

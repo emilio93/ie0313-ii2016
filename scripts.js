@@ -1,5 +1,6 @@
 $(document).ready(function() {
   loadHome();
+  loadLisence();
   showPage();
 
   $(window).on('hashchange',function(){
@@ -13,8 +14,15 @@ $(document).ready(function() {
     .fail(function() {$('#readme').html(marked('## Inicio\nNo se pudo cargar contenido.'));})
   }
 
+  function loadLisence() {
+    $('#readme').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
+    $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/LICENSE', {})
+    .then(function(data) {$('#license').html('<pre>' + data + '</pre>');})
+    .fail(function() {$('#license').html(marked('## Licencia\nNo se pudo cargar la licencia.'));})
+  }
+
   function showPage(id) {
-    if (typeof id === 'undefined') {
+    if (typeof id === 'undefined' || id.length <= 1) {
       var hash = window.location.hash;
       hash = hash.length>1? hash.substr(1): 'inicio';
       return showPage(hash);

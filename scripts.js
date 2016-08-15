@@ -3,6 +3,7 @@ $(document).ready(function() {
   loadTrabajos();
   loadTareas();
   loadMaterial();
+  loadLicencia();
   showPage();
 
   $('nav>ul>a').click(function(){

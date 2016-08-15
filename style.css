@@ -24,6 +24,10 @@ footer {
   height: 40px;
 }
 
+ul {
+  padding-left: 0;
+}
+
 a, a:visited {
   color: hsla(10, 40%, 50%, 1);
   -o-transition:.3s;

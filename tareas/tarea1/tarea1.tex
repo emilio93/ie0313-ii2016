@@ -21,11 +21,91 @@
 
 \begin{document}
 
-  \pagenumbering{gobble}
-  \portada{Tarea \#1}{14 de Agosto, 2016}
+\pagenumbering{gobble}
+\portada{Tarea \#1}{6 de Octubre, 2016}
 
-  \pagenumbering{arabic}
+\pagenumbering{arabic}
 
-  Contenido de la tarea.
-  
+\section{}
+\section{}
+\section{}
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+
+      \draw (0,0)
+      to [sV, l=$V_i$] (0, 6)
+      to [D*, l=$D_3$] (3, 6)
+      to [short] (12, 6)
+      to [open, o-o, v^<=$V_o$] (12, 0)
+      to [short] (0, 0)
+      ;
+
+      \draw (3, 0)
+      to [battery, l_=$6V$] (3, 2)
+      to [R, l_=$5k\Omega$] (3, 4)
+      to [D*, l_=$D_1$] (3, 6)
+      ;
+
+      \draw (6, 0)
+      to [battery, l_=$20V$] (6, 2)
+      to [R, l_=$10k\Omega$] (6, 4)
+      ;
+      \draw (6, 6) to [D*, l=$D_2$] (6, 4)
+      ;
+
+      \draw (9, 0) to [R, l_=$5k\Omega$] (9, 6)
+      ;
+
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+Se formulan las ecuaciones para $V_o$.
+
+\begin{align*}
+  V_o &= V_i - V_{D3} \\
+  V_o &= 6V - 5k\Omega \cdot I_{D1} - V_{D1} \\
+  V_o &= 20V + 10k\Omega \cdot I_{D2} + V_{D2} \\
+  V_o &= 5k\Omega \cdot \left( I_{D1} - I_{D2} + I_{D3} \right)
+\end{align*}
+
+Se encienden todos los diodos, entonces tenemos que:
+
+\begin{align*}
+  V_{D1} &= 0 & V_{D2} &= 0 & V_{D3} &= 0
+\end{align*}
+\begin{align*}
+  I_{D1} &> 0 & I_{D2} &> 0 & I_{D3} &> 0
+\end{align*}
+
+Se reformulan las ecuaciones:
+
+\begin{align*}
+  V_o &= V_i \\
+  V_o &= 6V - 5k\Omega \cdot I_{D1} \\
+  V_o &= 20V + 10k\Omega \cdot I_{D2} \\
+  V_o &= 5k\Omega \cdot \left( I_{D1} - I_{D2} + I_{D3} \right)
+\end{align*}
+
+Se resuelve para $I_{D1}$ y se aplica $I_{D1} > 0$:
+
+\begin{align*}
+  V_o = V_i &= 6V - 5k\Omega \cdot I_{D1} \\
+  I_{D1} &= \frac{6 - V_i}{5k\Omega} > 0 \\
+  & 6V > V_i
+\end{align*}
+
+Se resuelve para $I_{D2}$ y se aplica $I_{D2} > 0$:
+
+\begin{align*}
+  V_o = V_i &= 20V + 10k \cdot I_{D2} \\
+  I_{D2} &= \frac{V_i - 20}{10k\Omega} > 0 \\
+  & V_i > 20V
+\end{align*}
+
+No se puede dar simultáneamente que $6V > V_i$ y que  $V_i > 20V$, por lo que el
+caso en que los 3 diodos estén encendidos no existe.
+
 \end{document}

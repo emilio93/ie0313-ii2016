@@ -33,6 +33,30 @@ bottom=25.4mm,
 heightrounded,
 }
 
+\makeatletter
+\pgfcircdeclarebipole{}{\ctikzvalof{bipoles/diode/height}}{fullzzdiode}{\ctikzvalof{bipoles/diode/height}}{\ctikzvalof{bipoles/diode/width}}{
+
+    \pgfsetlinewidth{\pgfkeysvalueof{/tikz/circuitikz/bipoles/thickness}\pgfstartlinewidth}
+
+    \pgfscope
+        \pgftransformxshift{\pgf@circ@res@left}
+        \pgfpathmoveto{\pgfpoint{\pgf@circ@res@right-\pgf@circ@res@left}{0pt}}
+        \pgfpathlineto{\pgfpoint{0pt}{\pgf@circ@res@up}}
+        \pgfpathlineto{\pgfpoint{0pt}{\pgf@circ@res@down}}
+        \pgfpathlineto{\pgfpoint{\pgf@circ@res@right-\pgf@circ@res@left}{0pt}}
+        \pgfusepath{draw,fill}
+        \pgfpathmoveto{\pgfpoint{\pgf@circ@res@right-1.8\pgf@circ@res@left}{\pgf@circ@res@down-0.5\pgf@circ@res@up}}
+        \pgfpathlineto{\pgfpoint{\pgf@circ@res@right-\pgf@circ@res@left}{\pgf@circ@res@down}}
+        \pgfpathlineto{\pgfpoint{\pgf@circ@res@right-\pgf@circ@res@left}{\pgf@circ@res@up}}
+        \pgfpathlineto{\pgfpoint{\pgf@circ@res@right-0.2\pgf@circ@res@left}{\pgf@circ@res@up-0.5\pgf@circ@res@down}}
+        \pgfusepath{draw}
+    \endpgfscope
+}
+\def\pgf@circ@fullzzdiode@path#1{\pgf@circ@bipole@path{fullzzdiode}{#1}}
+\tikzset{full Zzener diode/.style = {\circuitikzbasekey, /tikz/to path=\pgf@circ@fullzzdiode@path}}
+\tikzset{zzD*/.style = {full Zzener diode}}
+\makeatother
+
 \sisetup{output-exponent-marker=\textsc{e}}
 \setlength{\jot}{10pt}
 

@@ -27,8 +27,141 @@
 \pagenumbering{arabic}
 
 \section{}
+
+Para el circuito mostrado, obtenga
+
+\begin{itemize}
+  \item El valor DC de la corriente y el voltaje del diodo(punto de
+  operación).
+  \item El valor de $v_o$ en función de $v_i$.
+\end{itemize}
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+
+      \draw (0,0)
+      to [sV, l=$v_i$] (0, 6)
+      to [R, l=$100\Omega$] (2.5, 6)
+      to [C, l=$C \to \infty$] (5, 6)
+      to [D*, l_=$\mathrm{1N4148}$, i=$i_D$] (8, 6)
+      to [R, l=$10\Omega$] (8, 3)
+      to [battery, l=$25V$] (8, 0)
+      to [short] (0, 0)
+      ;
+
+      \draw (5, 6)
+      to [R, l=$24300\Omega$] (5, 0)
+      ;
+
+      \draw (8, 0)
+      to [short] (16, 0)
+      to [open, o-o, v=$v_o$] (16, 6)
+      to [short] (14, 6)
+      to [C, l_=$C \to \infty$] (11, 6)
+      to [american controlled current source, l_=$10i_D$] (8, 6)
+      ;
+
+      \draw (11, 6)
+      to [R, l=$1650\Omega$] (11,0)
+      ;
+
+      \draw (14, 6)
+      to [R, l=$10k\Omega$] (14,0)
+      ;
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{1N4148}
+\end{figure}
+
+\subsection{Solución}
+
+
 \section{}
+
+Encuentre los valores mínimo y máximo de $r_i$, si $V_i$ varía entre $80V$ y
+$100V$.
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+
+      \draw (0,0)
+      to [sV, l=$V_i$] (0, 4)
+      to [R, l=$r_i$] (3, 4)
+      to [short] (9, 4)
+      to [R, l_=$100\Omega$] (9, 0)
+      to [short] (0, 0)
+      ;
+
+      \draw (3, 0)
+      to [zzD*, l=$Z_2$] (3, 2)
+      to [zzD*, l=$Z_1$] (3, 4)
+      ;
+
+      \draw (3, 2) to [short] (6, 2)
+      ;
+
+      \draw (6, 0)
+      to [R, l=$430\Omega$] (6, 2)
+      to [R, l=$200\Omega$] (6, 4)
+      ;
+
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{align*}
+  Z_1 &: \mathrm{1N4740A} \\
+  Z_2 &: \mathrm{1N4733A}
+\end{align*}
+
+\begin{center}
+    \begin{tabular}{ | c | c c c c | c c c | c c c | c | c | }
+      \hline
+      \multirow{2}{*}{Device} &
+      $V_Z$ & $Z_Z$ & \multirow{2}{*}{@} & $I_{ZT}$ &
+      $Z_{ZK}$ & \multirow{2}{*}{@} & $I_{ZK}$ &
+      $V_R$ & \multirow{2}{*}{@} & $I_R$ &
+      $I_{\mathrm{SURGE}}$ &
+      $I_{\mathrm{ZM}}$
+      \\
+      &
+      ($V$) & ($\Omega$) & & ($mA$) &
+      ($\Omega$) & & ($mA$) &
+      ($V$) & & ($\mu A$) &
+      ($mA$) &
+      ($mA$)
+      \\
+      \hline
+      1N4733A &
+      5.1 & 7.0 & \multirow{2}{*}{.} & 49 &
+      550 & \multirow{2}{*}{.} & 1.0 &
+      1.0 & \multirow{2}{*}{.} & 10 &
+      890 &
+      178
+      \\
+      1N4740A &
+      10 & 7.0 & & 25 &
+      700 & & 0.25 &
+      7.6 & & 10 &
+      454 &
+      91
+      \\
+      \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Solución}
+
 \section{}
+
+Para la siguiente figura, suponga que los diodos son ideales. Demuestre que los
+tres diodos no pueden conducir a la vez. ($V_i$ varia entre 0 y 50 voltios).
 
 \begin{figure}[H]
   \begin{center}
@@ -61,6 +194,8 @@
     \end{circuitikz}
   \end{center}
 \end{figure}
+
+\subsection{Solución}
 
 Se formulan las ecuaciones para $V_o$.
 

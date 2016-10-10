@@ -33,7 +33,7 @@ Para el circuito mostrado, obtenga
 \begin{itemize}
   \item El valor DC de la corriente y el voltaje del diodo(punto de
   operación).
-  \item El valor de $v_o$ en función de $v_i$.
+  \item El valor de $V_o$ en función de $V_i$.
 \end{itemize}
 
 \begin{figure}[H]
@@ -79,6 +79,44 @@ Para el circuito mostrado, obtenga
 \end{figure}
 
 \subsection{Solución}
+
+\subsubsection{Equivalente de Thévenin}
+
+$R_t = 10k\Omega || 1650\Omega \approx 1416.31\Omega$
+
+$R_t = 10k\Omega || 1650\Omega \approx 1416.31\Omega$
+
+\begin{align*}
+  24300 i_D + v_D &= 10 \cdot 11i_D - 25 \\
+  24300 i_D + v_D &= 1650 \cdot 10 i_D\\
+  &\Rightarrow i_D = - \frac{25 + v_D}{24289}
+\end{align*}
+
+Si $v_D = 0.7V \Rightarrow i_D = $
+
+
+Circuito en DC:
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+
+      \draw (0, 0)
+      to [R, l=$24300\Omega$] (0, 5)
+      to [D*, l_=$\mathrm{1N4148}$, i_=$i_D$, v^<=$v_D$] (3, 5)
+      to [R, l=$10\Omega$] (3, 2.5)
+      to [battery, l=$25V$] (3, 0)
+      to [short] (0, 0)
+      ;
+
+      \draw (3, 0)
+      to [short] (6, 0)
+      to [R, l=$1650\Omega$] (6, 5)
+      to [american controlled current source, l_=$10i_D$] (3, 5)
+      ;
+
+    \end{circuitikz}
+  \end{center}
+\end{figure}
 
 
 \section{}
@@ -157,6 +195,76 @@ $100V$.
 \end{center}
 
 \subsection{Solución}
+
+\subsubsection{Ecuaciones e Información de los Diodos Zener}
+
+\begin{align*}
+  Z_1 :& I_Z = Z_Z V_Z + I_{ZT} - Z_Z V_{Z_T}\\
+      & I_Z = \frac{V_Z}{7} - 1.40357 & 0.00025 < I_Z < 0.091\\
+      & V_Z = 7 I_Z + 9.825 & 9.827 < V_Z < 10.462\\
+  Z_2 :& I_Z = \frac{V_Z}{Z_Z} + I_{ZT} - \frac{V_Z}{Z_Z} \\
+       & I_Z = \frac{V_Z}{7} - 0.67957 & 0.001 < I_Z < 0.178 \\
+       & V_Z = 7 I_Z + 4.757 & 4.764 < V_Z < 6.003\\
+\end{align*}
+
+\subsubsection{Ecuaciones del Circuito}
+
+\begin{equation} \label{eq:zen1}
+  \frac{V_i - (V_{Z1}+V_{Z2})}{r_i} = I_{100\Omega} + I_{200\Omega} + I_{Z1}
+\end{equation}
+
+\begin{equation*}
+  I_{Z1} + I_{200\Omega} = I_{Z2} + I_{430\Omega}
+\end{equation*}
+\begin{equation} \label{eq:zen2}
+  \Rightarrow I_{Z1} = -I_{200\Omega} + I_{Z2} + I_{430\Omega}
+\end{equation}
+
+Usamos \ref{eq:zen2} en \ref{eq:zen1}:
+
+\begin{equation} \label{eq:zen3}
+  \frac{V_i - (V_{Z1}+V_{Z2})}{r_i} = I_{100\Omega} + I_{Z2} + I_{430\Omega}\\
+\end{equation}
+
+Definimos las corrientes por las resistencias de acuerdo a los voltajes de los
+diodos:
+
+\begin{align}
+  I_{200\Omega} &= \frac{V_{Z1}}{200} \label{eq:zen4} \\
+  I_{430\Omega} &= \frac{V_{Z2}}{430} \label{eq:zen5} \\
+  I_{100\Omega} &= \frac{V_{Z1} + V_{Z2}}{100} \label{eq:zen6}
+\end{align}
+
+Sustituimos \ref{eq:zen5} y \ref{eq:zen6} en \ref{eq:zen3} para obtener la
+ecuación de $r_i$ en terminos de las variables de los diodos.
+
+\begin{align}
+  \frac{V_i - (V_{Z1}+V_{Z2})}{r_i} &= \frac{V_{Z1} + V_{Z2}}{100} + I_{Z2} + \frac{V_{Z2}}{430} \nonumber \\
+  r_i &= \frac{V_i - (V_{Z1}+V_{Z2})}{\frac{V_{Z1} + V_{Z2}}{100} + I_{Z2} + \frac{V_{Z2}}{430}} \label{eq:zen7}
+\end{align}
+
+Caso $r_{i_{\mathrm{MAX}}}$\\
+$V_{i_{\mathrm{MAX}}}$\\
+$I_{Z1} > I_{Z2_{\mathrm{MIN}}} + \frac{V_{Z2_{\mathrm{MIN}}}}{430} = 0.001 + \frac{4.764}{430} \approx 0.012$\\
+$V_{Z1}(0.001 + \frac{4.764}{430}) \approx 9.910$\\
+$I_{Z2_{\mathrm{MIN}}}$\\
+$V_{Z2_{\mathrm{MIN}}}$
+
+
+Se usan estos valores en \ref{eq:zen7}:\\
+$r_i = \frac{100 - (9.910+4.764)}{\frac{9.910+4.764}{100} + 0.001 + \frac{4.764}{430}} \approx 537.25\Omega$
+
+\bigskip
+
+Caso $r_{i_{\mathrm{MIN}}}$\\
+$V_{i_{\mathrm{MIN}}}$\\
+$I_{Z1_{\mathrm{MAX}}}$\\
+$V_{Z1_{\mathrm{MAX}}}$\\
+$I_{Z2_{\mathrm{MAX}}}$\\
+$V_{Z2_{\mathrm{MAX}}}$
+
+Se usan estos valores en \ref{eq:zen7}:\\
+$r_i = \frac{80 - (10.462+6.003)}{\frac{10.462+6.003}{100} + 0.178 + \frac{6.003}{430}} \approx 178.16\Omega$
 
 \section{}
 

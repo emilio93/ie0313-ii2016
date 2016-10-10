@@ -22,9 +22,9 @@
 \begin{document}
 
 \pagenumbering{gobble}
-\portada{Tarea \#1}{6 de Octubre, 2016}
+\portada{Tarea \#1}{10 de Octubre, 2016}
 
-\pagenumbering{arabic}
+\pagenumbering{gobble}
 
 \section{}
 
@@ -78,22 +78,8 @@ Para el circuito mostrado, obtenga
   \includegraphics[width=0.5\textwidth]{1N4148}
 \end{figure}
 
+\newpage
 \subsection{Solución}
-
-\subsubsection{Equivalente de Thévenin}
-
-$R_t = 10k\Omega || 1650\Omega \approx 1416.31\Omega$
-
-$R_t = 10k\Omega || 1650\Omega \approx 1416.31\Omega$
-
-\begin{align*}
-  24300 i_D + v_D &= 10 \cdot 11i_D - 25 \\
-  24300 i_D + v_D &= 1650 \cdot 10 i_D\\
-  &\Rightarrow i_D = - \frac{25 + v_D}{24289}
-\end{align*}
-
-Si $v_D = 0.7V \Rightarrow i_D = $
-
 
 Circuito en DC:
 \begin{figure}[H]
@@ -118,7 +104,33 @@ Circuito en DC:
   \end{center}
 \end{figure}
 
+\begin{align*}
+  24300 i_D + v_D  + 10 \cdot 11i_D &= 25\\
+  1650 \cdot 10 i_D + 10 \cdot 11i_D &= 25 + v_i\\
+  &\Rightarrow I_d = \frac{25-v_D}{24410}
+\end{align*}
 
+Si $v_D = 0.7V \Rightarrow i_D = \frac{243}{244100} \approx 995\mu A$
+
+$995\mu A$ marca $\approx 0.6V$
+
+\bigskip
+
+Si $v_D = 0.6V \Rightarrow i_D = \frac{61}{61025} \approx 999.5\mu A$
+
+$999.5\mu$ Marca $\approx 0.65V$
+
+\bigskip
+
+Se concluye que se tiene $i_D = 1mA$ y $v_D = 0.65V$, siendo estos
+los valores del punto de operación. Así se tiene que $r_d = 25\Omega$.
+
+
+\bigskip
+
+*Parte b pendiente.
+
+\newpage
 \section{}
 
 Encuentre los valores mínimo y máximo de $r_i$, si $V_i$ varía entre $80V$ y
@@ -266,6 +278,7 @@ $V_{Z2_{\mathrm{MAX}}}$
 Se usan estos valores en \ref{eq:zen7}:\\
 $r_i = \frac{80 - (10.462+6.003)}{\frac{10.462+6.003}{100} + 0.178 + \frac{6.003}{430}} \approx 178.16\Omega$
 
+\newpage
 \section{}
 
 Para la siguiente figura, suponga que los diodos son ideales. Demuestre que los

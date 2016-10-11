@@ -1,0 +1,158 @@
+Encuentre los valores mínimo y máximo de $r_i$, si $V_i$ varía entre $80V$ y
+$100V$.
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+
+      \draw (0,0)
+      to [sV, l=$V_i$] (0, 4)
+      to [R, l=$r_i$] (3, 4)
+      to [short] (9, 4)
+      to [R, l_=$100\Omega$] (9, 0)
+      to [short] (0, 0)
+      ;
+
+      \draw (3, 0)
+      to [zzD*, l=$Z_2$] (3, 2)
+      to [zzD*, l=$Z_1$] (3, 4)
+      ;
+
+      \draw (3, 2) to [short] (6, 2)
+      ;
+
+      \draw (6, 0)
+      to [R, l=$430\Omega$] (6, 2)
+      to [R, l=$200\Omega$] (6, 4)
+      ;
+
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{align*}
+  Z_1 &: \mathrm{1N4740A} \\
+  Z_2 &: \mathrm{1N4733A}
+\end{align*}
+
+\begin{center}
+  \begin{tabular}{ | c | c c c c | c c c | c c c | c | c | }
+    \hline
+    \multirow{2}{*}{Device} &
+    $V_Z$ & $Z_Z$ & \multirow{2}{*}{@} & $I_{ZT}$ &
+    $Z_{ZK}$ & \multirow{2}{*}{@} & $I_{ZK}$ &
+    $V_R$ & \multirow{2}{*}{@} & $I_R$ &
+    $I_{\mathrm{SURGE}}$ &
+    $I_{\mathrm{ZM}}$
+    \\
+    &
+    ($V$) & ($\Omega$) & & ($mA$) &
+    ($\Omega$) & & ($mA$) &
+    ($V$) & & ($\mu A$) &
+    ($mA$) &
+    ($mA$)
+    \\
+    \hline
+    1N4733A &
+    5.1 & 7.0 & \multirow{2}{*}{.} & 49 &
+    550 & \multirow{2}{*}{.} & 1.0 &
+    1.0 & \multirow{2}{*}{.} & 10 &
+    890 &
+    178
+    \\
+    1N4740A &
+    10 & 7.0 & & 25 &
+    700 & & 0.25 &
+    7.6 & & 10 &
+    454 &
+    91
+    \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Solución}
+
+\subsubsection{Ecuaciones e Información de los Diodos Zener}
+
+\begin{align*}
+  I_Z &= \frac{1}{Z_Z} V_Z + \left( I_{ZT} - \frac{V_{Z_T}}{Z_Z} \right) &
+  V_Z &= Z_Z I_Z - Z_Z \left( I_{ZT} - \frac{V_{Z_T}}{Z_Z} \right)\\
+\end{align*}
+\begin{align*}
+  Z_1 :& I_{Z1} = \frac{V_{Z1}}{7} - 1.40357
+       & 0.00025 < I_{Z1} < 0.091\\
+       & V_{Z1} = 7 \cdot I_{Z1} + 9.825
+       & 9.827 < V_{Z1} < 10.462\\
+  Z_2 :& I_{Z2} = \frac{V_{Z2}}{7} - 0.67957
+       & 0.001 < I_{Z2} < 0.178 \\
+       & V_{Z2} = 7 \cdot I_{Z2} + 4.757
+       & 4.764 < V_{Z2} < 6.003\\
+\end{align*}
+
+\subsubsection{Ecuaciones del Circuito}
+
+\begin{align}
+  \frac{V_i - (V_{Z1}+V_{Z2})}{r_i} &= I_{100\Omega} + I_{200\Omega} + I_{Z1} \nonumber \\
+  r_i &= \frac{V_i - (V_{Z1}+V_{Z2})}{I_{100\Omega} + I_{200\Omega} + I_{Z1}} \label{eq:r_i}
+\end{align}
+
+Definimos las corrientes por las resistencias de acuerdo a los voltajes de los
+diodos:
+
+\begin{align}
+  I_{200\Omega} &= \frac{V_{Z1}}{200} \label{eq:i_r200} \\
+  I_{430\Omega} &= \frac{V_{Z2}}{430} \label{eq:i_r430} \\
+  I_{100\Omega} &= \frac{V_{Z1} + V_{Z2}}{100} \label{eq:i_r100}
+\end{align}
+
+Sustituimos \ref{eq:i_r200} y \ref{eq:i_r100} en \ref{eq:r_i} para obtener la
+ecuación de $r_i$ en terminos de las variables de los diodos.
+
+\begin{equation} \label{eq:r_ifinal}
+  r_i = \frac{V_i - (V_{Z1}+V_{Z2})}{\frac{V_{Z1} + V_{Z2}}{100} + \frac{V_{Z1}}{200} + I_{Z1}}
+\end{equation}
+
+\subsubsection{Casos para $r_i$}
+
+$r_{i\mathrm{MIN}}$
+\begin{align*}
+  V_{i_{\mathrm{MAX}}} &= 100 \\
+  I_{Z1{\mathrm{MAX}}} &\Rightarrow I_{Z1} + I_{200\Omega} = 0.091 + \frac{10.462}{200} = 0.14331 \\
+  0.14331 &= I_{Z2} + I_{430\Omega} = I_{Z2} + \frac{V_{Z2}}{430} = I_{Z2} + \frac{7 I_{Z2} + 4.757}{430} \\
+  0.14331 &= \frac{430I_{Z2} + 7 I_{Z2} + 4.757}{430} \\
+  I_{Z2} &= \frac{430 \cdot 0.14331 - 4.757}{430 + 7} = \frac{56.8663}{437} \\
+  I_{Z2} &\approx 0.13013 \Rightarrow V_{Z2} \approx 5.668
+\end{align*}
+
+
+Se usan estos valores en \ref{eq:r_ifinal}:\\
+\begin{equation*}
+  r_{i\mathrm{MIN}} = \frac{100 - (10.462 + 5.668)}{\frac{10.462 + 5.668}{100} + \frac{10.462}{200} + 0.091}
+  \approx 275.34\Omega
+\end{equation*}
+
+\bigskip
+
+$r_{i\mathrm{MAX}}$\\
+\begin{align*}
+  V_{i_{\mathrm{MIN}}} &= 80 \\
+  I_{Z2{\mathrm{MIN}}} &\Rightarrow I_{Z2} + I_{430\Omega} = 0.001 + \frac{4.764}{430} = 0.012079 \\
+  0.012079 &= I_{Z1} + I_{200\Omega} = I_{Z1} + \frac{V_{Z1}}{200} = I_{Z1} + \frac{7 I_{Z1} + 9.827}{200} \\
+  0.012079 &= \frac{200I_{Z1} + 7 I_{Z1} + 9.827}{200} \\
+  I_{Z1} &= \frac{200 \cdot 0.012079 - 9.827}{200 + 7} = \frac{-4632}{207}
+\end{align*}
+Como el valor de $I_{Z1}$ está fuera de sus límites, no sire. Se debe usar $I_{Z1{\mathrm{MIN}}}$.
+\begin{align*}
+  I_{Z1{\mathrm{MIN}}} &\Rightarrow I_{Z1} + I_{200\Omega} = 0.00025 + \frac{9.827}{200} = 0.049385 \\
+  0.049385 &= I_{Z2} + I_{430\Omega} = I_{Z2} + \frac{V_{Z2}}{430} = I_{Z2} + \frac{7 I_{Z2} + 4.757}{430} \\
+  0.049385 &= \frac{430I_{Z2} + 7 I_{Z2} + 4.757}{430} \\
+  I_{Z2} &= \frac{430 \cdot 0.049385 - 4.757}{430 + 7} \approx 0.037708 \Rightarrow V_{Z2} \approx 5.021
+\end{align*}
+
+
+Ahora $V_{Z2}$ si está dentro del rango aceptado. Se usan estos valores en \ref{eq:r_ifinal}:\\
+\begin{equation*}
+  r_{i\mathrm{MIN}} = \frac{80 - (9.827 + 5.021)}{\frac{9.827 + 5.021}{100} + \frac{9.827}{200} + 0.00025}
+  \approx 329.28\Omega
+\end{equation*}

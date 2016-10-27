@@ -106,32 +106,30 @@ Circuito en AC
 
       \draw (0,0)
       to [sV, l=$v_i$] (0, 6)
-      to [R, l=$100\Omega$] (2.5, 6)
-      to [C, l=$C \to \infty$] (5, 6)
-      to [D*, l_=$\mathrm{1N4148}$, i=$i_D$] (8, 6)
-      to [R, l=$10\Omega$] (8, 3)
-      to [battery, l=$25V$] (8, 0)
+      to [R, l=$100\Omega$] (3, 6)
+      to [D*, l_=$\mathrm{1N4148}$, i=$i_D$] (6, 6)
+      to [R, l=$10\Omega$] (6, 3)
+      to [battery, l=$25V$] (6, 0)
       to [short] (0, 0)
       ;
 
-      \draw (5, 6)
-      to [R, l=$24300\Omega$] (5, 0)
+      \draw (3, 6)
+      to [R, l=$24300\Omega$] (3, 0)
       ;
 
-      \draw (8, 0)
-      to [short] (16, 0)
-      to [open, o-o, v=$v_o$] (16, 6)
-      to [short] (14, 6)
-      to [C, l_=$C \to \infty$] (11, 6)
-      to [american controlled current source, l_=$10i_D$] (8, 6)
+      \draw (6, 0)
+      to [short] (14, 0)
+      to [open, o-o, v=$v_o$] (14, 6)
+      to [short] (9, 6)
+      to [american controlled current source, l_=$10i_D$] (6, 6)
       ;
 
-      \draw (11, 6)
-      to [R, l=$1650\Omega$] (11,0)
+      \draw (9, 6)
+      to [R, l=$1650\Omega$] (9, 0)
       ;
 
-      \draw (14, 6)
-      to [R, l=$10k\Omega$] (14,0)
+      \draw (12, 6)
+      to [R, l=$10k\Omega$] (12, 0)
       ;
     \end{circuitikz}
   \end{center}

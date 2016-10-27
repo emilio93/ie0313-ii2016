@@ -1,0 +1,124 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\bigskip
+
+\textbf{Caso: $D_1$ off, $D_2$ on}
+
+Se aplica el estado del diodo.
+
+\begin{align*}
+  I_{D1} = V_{D2} &= 0
+  &
+  I_{D2} &> 0
+  &
+  V_{D1} &\leq 0
+\end{align*}
+
+\begin{align}
+  V_o &= V_i - 1k I_i - V_{D1} - 6 \label{p3:offon:vo1}
+  \\
+  V_o &= V_i - 3k I_i + 1k I_{D2} \label{p3:offon:vo2}
+  \\
+  V_o &= 2k I_{D2} - 1k I_i \label{p3:offon:vo3}
+  \\
+  V_o &= 2 + 1k I_i - 1k I_{D2} \label{p3:offon:vo4}
+\end{align}
+
+Se obtiene $V_{D1}$ e $I_{D2}$ de \ref{p3:offon:vo1} y \ref{p3:offon:vo3}.
+
+\begin{align*}
+  V_{D1} &= V_i - 1k I_i - V_o - 6
+  \\
+  2k I_{D2} &= V_o + 1k I_i
+\end{align*}
+
+Se obtiene $I_i$ de \ref{p3:offon:vo2}
+
+\begin{align*}
+  V_o &= V_i - 3k I_i + 1k I_{D2}
+  \\
+  V_o &= V_i - 3k I_i + \left(\frac{V_o + 1k I_i}{2}\right)
+  \\
+  V_o &= V_i - 3k I_i + \frac{1}{2} V_o + 500 I_i
+  \\
+  2500 I_i &= V_i - \frac{1}{2} V_o
+\end{align*}
+
+Se remplaza $I_i$ en $V_{D1}$ e $I_{D2}$
+
+\begin{align*}
+  V_{D1} &= V_i - 1k \frac{V_i-\frac{1}{2} V_o}{2500} - V_o - 6
+  \\
+  V_{D1} &= V_i - \frac{2}{5} V_i + \frac{1}{5} V_o - V_o - 6
+  \\
+  V_{D1} &= \frac{3}{5} V_i - \frac{4}{5} V_o - 6
+\end{align*}
+\begin{align*}
+  2k I_{D2} &= V_o + 1k \frac{V_i-\frac{1}{2} V_o}{2500}
+  \\
+  2k I_{D2} &= V_o + \frac{5}{2} V_i - \frac{1}{5} V_o
+  \\
+  2k I_{D2} &= \frac{4}{5} V_o + \frac{5}{2} V_i
+\end{align*}
+
+Se obtiene $V_o$ en función de $V_i$ con \ref{p3:offon:vo4}
+
+\begin{align*}
+  V_o &= 2 + 1k I_i - 1k I_{D2}
+  \\
+  V_o &= 2 +
+    1k \left(\frac{V_i-\frac{1}{2} V_o}{2500}\right) -
+    \left(\frac{2}{5} V_o + \frac{5}{4} V_i\right)
+  \\
+  V_o &= 2 +
+    \frac{2}{5} V_i - \frac{1}{5} V_o -
+    \frac{2}{5} V_o - \frac{5}{4} V_i
+  \\
+  V_o &= 2 -\frac{3}{5} V_o - \frac{17}{20} V_i
+  \\
+  \frac{8}{5} V_o &= 2 - \frac{17}{20} V_i
+  \\
+  \frac{8}{5} V_o &= 2 - \frac{17}{20} V_i
+  \\
+  V_o &= \frac{5}{4} - \frac{17}{32} V_i
+\end{align*}
+
+Se aplican restricciones para obtener rango de funcionamiento.
+
+\begin{align*}
+  V_{D1} = \frac{3}{5} V_i - \frac{4}{5} V_o - 6  &\leq 0
+  \\
+  \frac{3}{5} V_i - \frac{4}{5} \left(\frac{5}{4} - \frac{17}{32} V_i\right) &\leq 6
+  \\
+  \frac{3}{5} V_i - 1 + \frac{17}{40} V_i &\leq 6
+  \\
+  \frac{41}{40} V_i &\leq 7
+  \\
+  V_i &\leq \frac{280}{41} \approx 6.83
+\end{align*}
+
+\begin{align*}
+  2k I_{D2} = \frac{4}{5} V_o + \frac{5}{2} V_i &> 0
+  \\
+  \frac{4}{5} \left(\frac{5}{4} - \frac{17}{32} V_i\right) + \frac{5}{2} V_i &> 0
+  \\
+  1 - \frac{17}{40} V_i + \frac{5}{2} V_i &> 0
+  \\
+  1 - \frac{117}{40} V_i &> 0
+  \\
+  \frac{83}{40} V_i &> -1
+  \\
+  V_i &> -\frac{40}{83} \approx -0.48
+\end{align*}

@@ -13,24 +13,34 @@
 %   limitations under the License.
 
 % Unnumbered section added to toc
-\newcommand{\usection}[1]{
-\section*{#1}
-\addcontentsline{toc}{section}{#1}
+% 1: The section's name.
+\newcommand{\usection}[1]
+{
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
 }
 
 % Unnumbered subsection added to toc
-\newcommand{\usubsection}[1]{
-\subsection*{#1}
-\addcontentsline{toc}{subsection}{#1}
+% 1: The subsection's name.
+\newcommand{\usubsection}[1]
+{
+  \subsection*{#1}
+  \addcontentsline{toc}{subsection}{#1}
 }
 
 % Unnumbered subsubsection added to toc
-\newcommand{\usubsubsection}[1]{
-\subsubsection*{#1}
-\addcontentsline{toc}{subsubsection}{#1}
+% 1: The subsubsection's name.
+\newcommand{\usubsubsection}[1]
+{
+  \subsubsection*{#1}
+  \addcontentsline{toc}{subsubsection}{#1}
 }
 
-\newcommand{\portada}[2]{
+% Adds a title page to the document
+% 1: The document's name
+% 2: The document's date
+\newcommand{\portada}[2]
+{
 \begin{titlepage}
   \vspace*{\fill}
   \begin{center}

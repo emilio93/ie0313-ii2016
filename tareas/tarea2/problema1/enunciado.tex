@@ -1,0 +1,82 @@
+(12.5 ptos) Diseñe el siguiente circuito para lograr una Máxima Excursión
+Simétrica con una corriente en el emisor de $T_1$ de $100mA$. $\beta_1 = \beta_2
+= \beta_3 = 100$.
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+
+      \draw (0,0) [american voltages]
+      to [open] (0, 4) to [V, l=$V_i$] (0, 0) to [open] (0, 4)
+      to [R, l=$ri$] (3, 4)
+      to [C, l=$C$] (6, 4)
+      to [short] (7.01, 4) to [open] (6, 4)
+      to [R, l=$R_1 \equal 1M\Omega$] (6, 8)
+      to [short] (13, 8)
+      to [R, l=$R_{E1}$] (13, 4)
+      to [short] (15, 4)
+      to [short] (15, 3.5)
+      to [open, v^=$V_o$] (15, 1.5)
+      to [short] (15, 0)
+      ;
+
+      \draw (7.85, 8)
+      to [short] (7.85, 4.75)
+      to [open, l=$T_3$] (7.85, 3.25)
+      to [R, l=$R_{E3}$] (7.85, 0)
+      to [short] (13, 0)
+      to [short] (13, 1.75)
+      to [open, l_=$T_1$] (13, 3.25)
+      to [short] (13, 4)
+      ;
+
+      \draw (11.5, 6)
+      to [short] (10.5, 6)
+      to [short] (10.5, 4)
+      to [open, l=$T_2$] (10.5, 2.5)
+      to [R, l=$R_{C2}$] (10.5, 0)
+      to [open] (10.5, 2.5)
+      to [short] (12.2, 2.5)
+      ;
+
+      \draw (7.85, 3.25)
+      to [short] (9.7, 3.25)
+      ;
+
+      \draw (7.85, 8.5)
+      to [short, l=$30V$] (7.85, 8.5)
+      to [short, o-*] (7.85, 8)
+      to [open] (7.85, 0)
+      to [short, -o] (7.85, -0.5)
+      to [short, l=$-30V$] (7.85, -0.5)
+      ;
+
+      % T1
+      \draw (7.85, 4)
+      node [npn]{}
+      ;
+
+      % T2
+      \draw (10.5, 3.25)
+      node [pnp]{}
+      ;
+
+      % T3
+      \draw (13, 2.5)
+      node [pnp]{}
+      ;
+
+      \draw(0, 0)
+      node[ground]{}
+      ;
+
+      \draw (11.5, 6)
+      node [ground]{}
+      ;
+
+      \draw(15, 0)
+      node[ground]{}
+      ;
+    \end{circuitikz}
+  \end{center}
+\end{figure}

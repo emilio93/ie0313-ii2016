@@ -1,0 +1,133 @@
+(12.5 ptos) Diseñe el circuito de forma que la corriente $I_{DS}$ se mantenga
+dentro de los valores de $4mA\pm 0.5mA$.
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+      \draw (0,0)
+      to [R, l_=$R_2$] (0, 3.25)
+      to [short] (0, 4) to [open] (3.1, 4) to [short] (0, 4)
+      to [short] (0, 4.75)
+      to [R, l_=$R_1$] (0, 8)
+      to [short] (4, 8)
+      to [open, -o] (4, 8.5) to [short, l=$20V$] (4, 8.5) to [short] (4, 8)
+      to [R, l=$R_D$] (4, 4.75)
+      to [open, l=$\mathrm{JFET}$] (4, 3.25)
+      to [R, l=$R_S$] (4, 0)
+      ;
+
+      \draw(4, 4) node[nmos]{};
+      \draw(0, 0) node[ground]{};
+      \draw(4, 0) node[ground]{};
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\textbf{\large Electrical Characteristics }\tiny{TA = 25°C unless otherwise noted}
+\begin{center}
+  \begin{tabular}{ c | c | c  c | c | c | c | c }
+    \hline
+      \textbf{Symbol} &
+      \textbf{Parameter} &
+      \textbf{Test Conditions} & &
+      \textbf{Min} &
+      \textbf{Typ} &
+      \textbf{Max} &
+      \textbf{Units}
+    \\
+    \hline
+      \multicolumn{8}{l}{}\\
+      \multicolumn{8}{l}{OFF CHARACTERISTICS}
+    \\
+    \hline
+      $V_{(BR)GSS}$ &
+      \tiny{Gate-Source Breakdown Voltage} &
+      \tiny{$I_G = -1.0 \mu A$ $V_{DS} = 0$} &
+      &
+      -25 &
+      &
+      &
+      V
+    \\
+    \hline
+      $I_{GSS}$ &
+      \tiny{Gate Reverse Current} &
+      \tiny{$V_{GS} = -20.0 V, V_{DS} = 0$} &
+      &
+      &
+      &
+      -1.0&
+      $nA$
+    \\
+      &
+      &
+      \tiny{$V_{GS} = -20.0 V, V_{DS} = 0, T_A = 100 \degree C$} &
+      &
+      &
+      &
+      -0.2&
+      $\mu A$
+    \\
+    \hline
+      $V_{GS_{(Off)}}$ &
+      \tiny{Gate-Source Cutoff Voltage} &
+      \tiny{$V_{DS} = 15 V, I_D = 10 nA$} &
+      \tiny{\textbf{5484}}&
+      -0.3&
+      &
+      -3.0&
+      V
+    \\
+      &
+      &
+      &
+      \tiny{\textbf{5485}}&
+      -0.5&
+      &
+      -4.0&
+      V
+    \\
+      &
+      &
+      &
+      \tiny{\textbf{5486}}&
+      -2.0&
+      &
+      -6.0&
+      V
+    \\
+    \hline
+      \multicolumn{8}{l}{}\\
+      \multicolumn{8}{l}{ON CHARACTERISTICS}
+    \\
+    \hline
+      $I_{DSS}$ &
+      \tiny{Zero-Gate Voltage Drain Current*} &
+      \tiny{$V_{DS} = 15 V, V_{GS} = 0$} &
+      \tiny{\textbf{5484}}&
+      1.0&
+      &
+      5.0&
+      mA
+    \\
+      &
+      &
+      &
+      \tiny{\textbf{5485}}&
+      4.0&
+      &
+      10&
+      mA
+    \\
+      &
+      &
+      &
+      \tiny{\textbf{5486}}&
+      8.0&
+      &
+      20&
+      mA
+    \\
+    \hline
+  \end{tabular}
+\end{center}

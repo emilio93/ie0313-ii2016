@@ -16,7 +16,7 @@
 
 \textbf{Caso: $D_1$ on, $D_2$ off}
 
-Se aplica el estado del diodo.
+Se aplica el estado de los diodos:
 \begin{align*}
   I_{D1} &> 0
   &
@@ -26,104 +26,68 @@ Se aplica el estado del diodo.
 \end{align*}
 
 \begin{align}
-  V_o &= V_i - 1k I_i - 1k I_{D1} - 6 \label{p3:onoff:vo1}
+  V_o &=
+    \frac{3}{4} V_i
+    - 1.5k I_{D1}
+    - \frac{11}{2} \label{p3:onoff:vo1}
   \\
-  V_o &= V_i - 3k I_i + 2k I_{D1} \label{p3:onoff:vo2}
+  V_o &=
+    \frac{1}{4} V_i
+    + 500 I_{D1}
+    + \frac{3}{2} \label{p3:onoff:vo2}
   \\
-  V_o &= V_{D2} - 1k I_i + 1k I_{D1} \label{p3:onoff:vo3}
-  \\
-  V_o &= 2 + 1k I_i \label{p3:onoff:vo4}
+  V_o &=
+    - \frac{1}{4} V_i
+    + 500 I_{D1}
+    + V_{D2}
+    + \frac{1}{2} \label{p3:onoff:vo3}
 \end{align}
 
-Se obtiene $I_{D1}$ e $V_{D2}$ de \ref{p3:onoff:vo1} y \ref{p3:onoff:vo3}.
+Se despeja $I_{D1}$ de \ref{p3:onoff:vo1} y \ref{p3:onoff:vo2}:
 
 \begin{align*}
-  1k I_{D1} &= V_i - 1k I_i - V_o - 6
-\end{align*}
-\begin{align*}
-  V_{D2} &= V_o - 1k I_i + 1k I_{D1}
+  \frac{3}{4} V_i - 1.5k I_{D1} - \frac{11}{2} &=
+  \frac{1}{4} V_i + 500 I_{D1}  + \frac{3}{2}
   \\
-  V_{D2} &= V_o - 1k I_i + V_i - 1k I_i - V_o - 6
-  \\
-  V_{D2} &= V_i - 2k I_i - 6
+  2k I_{D1} &= \frac{1}{2} V_i - 7
 \end{align*}
 
-Se obtiene $I_i$ de \ref{p3:onoff:vo2}
+Se despeja $V_{D2}$ de \ref{p3:onoff:vo2} y \ref{p3:onoff:vo3}:
 
 \begin{align*}
-  V_o &= V_i - 3k I_i + 2k I_{D1}
+  \frac{1}{4} V_i   + \frac{1}{4} \left( \frac{1}{2} V_i - 7 \right) + \frac{3}{2} &=
+  - \frac{1}{4} V_i + \frac{1}{4} \left( \frac{1}{2} V_i - 7 \right) + V_{D2} + \frac{1}{2}
   \\
-  V_o &= V_i - 3k I_i + 2 \left(V_i - 1k I_i - V_o - 6\right)
-  \\
-  V_o &= V_i - 3k I_i + 2 V_i - 2k I_i - 2 V_o - 12
-  \\
-  3 V_o &= 3 V_i - 5k I_i - 12
-  \\
-  5k I_i &= 3 V_i - 3 V_o - 12
-  \end{align*}
-
-Se remplaza $I_i$ en $I_{D1}$ e $V_{D2}$
-
-\begin{align*}
-  1k I_{D1} &= V_i - 1k I_i - V_o - 6
-  \\
-  1k I_{D1} &= V_i - \left(\frac{3 V_i - 3 V_o - 12}{5}\right) - V_o - 6
-  \\
-  1k I_{D1} &= V_i - \frac{3}{5} V_i + \frac{3}{5} V_o + \frac{12}{5} - V_o - 6
-  \\
-  1k I_{D1} &= \frac{2}{5} V_i - \frac{2}{5} V_o - \frac{18}{5}
-\end{align*}
-\begin{align*}
-  V_{D2} &= V_i - 2k I_i - 6
-  \\
-  V_{D2} &= V_i - 2 \left(\frac{3 V_i - 3 V_o - 12}{5}\right) - 6
-  \\
-  V_{D2} &= V_i - \frac{6}{5} V_i + \frac{6}{5} V_o + \frac{24}{5} - 6
-  \\
-  V_{D2} &= - \frac{1}{5} V_i + \frac{6}{5} V_o - \frac{6}{5}
+  V_{D2} &= \frac{1}{2} V_i + 1
 \end{align*}
 
-Se obtiene $V_o$ en función de $V_i$ con \ref{p3:onoff:vo4}
+Se obtiene $V_o(V_i)$ y $V_i(V_o)$ de \ref{p3:onon:vo2}:
 
 \begin{align*}
-  V_o &= 2 + 1k I_i
-  \\
-  V_o &= 2 + \left(\frac{3 V_i - 3 V_o - 12}{5}\right)
-  \\
-  V_o &= 2 + \frac{3}{5} V_i - \frac{3}{5} V_o - \frac{12}{5}
-  \\
-  \frac{8}{5} V_o &= \frac{3}{5} V_i - \frac{2}{5}
+  V_o &=
+    \frac{1}{4} V_i
+    + \frac{1}{4} \left( \frac{1}{2} V_i - 7 \right)
+    + \frac{3}{2}
   \\
   V_o &= \frac{3}{8} V_i - \frac{1}{4}
+  \\
+  V_o &= \frac{3 V_i - 2}{8} \Rightarrow V_i = 8 V_o + 2
 \end{align*}
 
-Se aplican restricciones para obtener rango de funcionamiento.
+Se obtiene la restricción dada por $I_{D1}$:
 
 \begin{align*}
-  5k I_{D1} = 2 V_i - 2 V_o - 18 &> 0
-  \\
-  2 V_i - 2 V_o &> 18
-  \\
-  2 V_i - 2 \left(\frac{3}{8} V_i - \frac{1}{4}\right) &> 18
-  \\
-  2 V_i - \frac{3}{4} V_i + \frac{1}{2} &> 18
-  \\
-  \frac{5}{4} V_i &> \frac{35}{2}
-  \\
-  V_i &> 14
+  2k I_{D1} = \frac{1}{2} V_i - 7 > 0
+  \Rightarrow
+  V_i > 14
 \end{align*}
+
+Se obtiene la restricción dada por $V_{D2}$:
 
 \begin{align*}
-  V_{D2} = - \frac{1}{5} V_i + \frac{6}{5} V_o - \frac{6}{5} &\leq 0
-  \\
-  - \frac{1}{5} V_i + \frac{6}{5} \left(\frac{3}{8} V_i - \frac{1}{4}\right) &\leq \frac{6}{5}
-  \\
-  - \frac{1}{5} V_i + \frac{9}{20} V_i - \frac{3}{10} &\leq \frac{6}{5}
-  \\
-  \frac{1}{4} V_i &\leq \frac{3}{2}
-  \\
-  V_i &\leq 6
+  V_{D2} = \frac{1}{2} V_i + 1 \leq 0
+  \Rightarrow
+  V_i \leq -2
 \end{align*}
 
-
-Caso no existe puesto que $\left]-\infty, 6\right] \quad \bigcup \quad \left]14, \infty\right[ = \emptyset$.
+Se obtiene que el caso no se puede dar.

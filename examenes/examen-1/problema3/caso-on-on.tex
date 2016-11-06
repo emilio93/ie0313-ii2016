@@ -14,7 +14,7 @@
 
 \textbf{Caso: $D_1$ on, $D_2$ on}
 
-Se aplica el estado de los diodos.
+Se aplica el estado de los diodos:
 \begin{align*}
   I_{D1} &> 0
   &
@@ -24,111 +24,82 @@ Se aplica el estado de los diodos.
 \end{align*}
 
 \begin{align}
-  V_o &= V_i - 1k I_i - 1k I_{D1} - 6 \label{p3:onon:vo1}
+  V_o &=
+    \frac{3}{4} V_i
+    - 1.5k I_{D1}
+    - 500 I_{D2}
+    - \frac{11}{2} \label{p3:onon:vo1}
   \\
-  V_o &= V_i - 3k I_i + 2k I_{D1} + 1k I_{D2} \label{p3:onon:vo2}
+  V_o &=
+    \frac{1}{4} V_i
+    + 500 I_{D1}
+    - 500 I_{D2}
+    + \frac{3}{2} \label{p3:onon:vo2}
   \\
-  V_o &= 2k I_{D2} - 1k I_i + 1k I_{D1} \label{p3:onon:vo3}
-  \\
-  V_o &= 2 + 1k I_i - 1k I_{D2} \label{p3:onon:vo4}
+  V_o &=
+    - \frac{1}{4} V_i
+    + 500 I_{D1}
+    + 1.5k I_{D2}
+    + \frac{1}{2} \label{p3:onon:vo3}
 \end{align}
 
-Se obtiene $I_{D1}$ e $I_{D2}$ de \ref{p3:onon:vo1} y \ref{p3:onon:vo3}.
+Se despeja $I_{D1}$ de \ref{p3:onon:vo1} y \ref{p3:onon:vo2}:
 
 \begin{align*}
-  1k I_{D1} &= V_i - 1k I_i - V_o - 6
+  \frac{3}{4} V_i - 1.5k I_{D1} - 500 I_{D2} - \frac{11}{2} &=
+  \frac{1}{4} V_i + 500 I_{D1}  - 500 I_{D2} + \frac{3}{2}
+  \\
+  2k I_{D1} &= \frac{1}{2} V_i - 7
 \end{align*}
 
+Se despeja $I_{D2}$ de \ref{p3:onon:vo1} y \ref{p3:onon:vo3}:
 \begin{align*}
-  2k I_{D2} &= V_o + 1k I_i - 1k I_{D1}
+  \frac{3}{4} V_i   - \frac{3}{4} \left( \frac{1}{2} V_i - 7 \right) - 500 I_{D2}  - \frac{11}{2} &=
+  - \frac{1}{4} V_i + \frac{1}{4} \left( \frac{1}{2} V_i - 7 \right) + 1.5k I_{D2} + \frac{1}{2}
   \\
-  2k I_{D2} &= V_o + 1k I_i - 1k \frac{V_i - 1k I_i - V_o - 6}{1k}
+  \frac{3}{4} V_i                         - 500 I_{D2}  - \frac{11}{2} &=
+  - \frac{1}{4} V_i + \frac{1}{2} V_i - 7 + 1.5k I_{D2} + \frac{1}{2}
   \\
-  2k I_{D2} &= V_o + 1k I_i - V_i + 1k I_i + V_o + 6
-  \\
-  2k I_{D2} &= 2 V_o + 2k I_i - V_i + 6
-  \end{align*}
-
-Se obtiene $I_i$ de \ref{p3:onon:vo2}
-
-\begin{align*}
-  V_o &= V_i - 3k I_i + 2k I_{D1} + 1k I_{D2}
-  \\
-  V_o &= V_i - 3k I_i +
-    2 \left(V_i - 1k I_i - V_o - 6\right) +
-    \frac{2 V_o + 2k I_i - V_i + 6}{2}
-  \\
-  V_o &= V_i \left(1+2-\frac{1}{2}\right) +
-    I_i \left(1k-3k-2k\right) +
-    V_o \left(1-2\right)
-    -12 + 3
-  \\
-  V_o &= \frac{5}{2} V_i - 4k I_i - V_o - 9
-  \\
-  4k I_i &= {\frac{5}{2} V_i - 2 V_o - 9}
+  2k I_{D2} = \frac{1}{2} V_i + 1
 \end{align*}
 
-Se remplaza $I_i$ en $I_{D1}$ e $I_{D2}$
-
+Se obtiene $V_o(V_i)$ y $V_i(V_o)$ de \ref{p3:onon:vo2}:
 \begin{align*}
-  1k I_{D1} &= V_i - \left(\frac{{\frac{5}{2} V_i - 2 V_o - 9}}{4}\right) - V_o - 6
+  V_o &=
+    \frac{1}{4} V_i
+    + \frac{1}{4} \left( \frac{1}{2} V_i - 7 \right)
+    - \frac{1}{4} \left( \frac{1}{2} V_i + 1 \right)
+    + \frac{3}{2}
   \\
-  &= V_i - \left({\frac{5}{8} V_i - \frac{1}{2} V_o - \frac{9}{4}}\right) - V_o - 6
+  V_o &= \frac{1}{4} V_i - \frac{1}{2}
   \\
-  &= V_i - \frac{5}{8} V_i + \frac{1}{2} V_o + \frac{9}{4} - V_o - 6
-  \\
-  &= \frac{3}{8} V_i - \frac{1}{2} V_o - \frac{15}{4}
-\end{align*}
-\begin{align*}
-  2k I_{D2} &=
-    2 V_o +
-    2 \left(\frac{{\frac{5}{2} V_i - 2 V_o - 9}}{4}\right) -
-    V_i + 6
-  \\
-  &= 2 V_o + \frac{5}{4} V_i - V_o - \frac{9}{2} - V_i + 6
-  \\
-  &= V_o + \frac{1}{4} V_i + \frac{3}{2}
-  \end{align*}
-
-Se obtiene $V_o$ en función de $V_i$ con \ref{p3:onon:vo4}
-
-\begin{align*}
-  V_o &= 2 + 1k I_i - 1k I_{D2}
-  \\
-  V_o &= 2 +
-    \frac{3}{8} V_i - \frac{1}{2} V_o - \frac{15}{4} -
-    \left(\frac{V_o + \frac{1}{4} V_i + \frac{3}{2}}{2}\right)
-  \\
-  V_o &= 2 +
-    \frac{3}{8} V_i - \frac{1}{2} V_o - \frac{15}{4} -
-    \frac{1}{2} V_o - \frac{1}{8} V_i - \frac{3}{4}
-  \\
-  V_o &= \frac{1}{4} V_i - V_o - \frac{5}{2}
-  \\
-  V_o &= \frac{1}{8} V_i - \frac{5}{4}
+  V_o &= \frac{V_i - 2}{4} \Rightarrow V_i = 4 V_o + 2
 \end{align*}
 
-Se aplican restricciones para obtener rango de funcionamiento.
+Se obtiene la restricción dada por $I_{D1}$:
 
-\begin{align*}
-  1k I_{D1} = \frac{3}{8} V_i - \frac{1}{2} V_o - \frac{15}{4} &> 0
-  \\
-  \frac{3}{8} V_i - \frac{1}{2} V_o &> \frac{15}{4}
-  \\
-  \frac{3}{8} V_i - \frac{1}{2} \left(\frac{1}{8} V_i - \frac{5}{4}\right) &> \frac{15}{4}
-  \\
-  \frac{3}{8} V_i - \frac{1}{16} V_i + \frac{5}{8} &> \frac{15}{4}
-  \\
-  \frac{5}{16} V_i &> \frac{25}{8}
-  \\
-  V_i &> 10
-\end{align*}
-\begin{align*}
-  2k I_{D2} = V_o + \frac{1}{4} V_i + \frac{3}{2} &> 0
-  \\
-  \frac{1}{8} V_i - \frac{5}{4} + \frac{1}{4} V_i &> -\frac{3}{2}
-  \\
-  \frac{3}{8} V_i &> -\frac{1}{4}
-  \\
-  V_i &> -\frac{2}{3}
-\end{align*}
+\begin{equation*}
+  2k I_{D1} = \frac{1}{2} V_i - 7 > 0
+  \Rightarrow
+  V_i > 14
+\end{equation*}
+
+Se obtiene la restricción dada por $I_{D2}$:
+
+\begin{equation*}
+  2k I_{D2} = \frac{1}{2} V_i + 1 > 0
+  \Rightarrow
+  V_i > -2
+\end{equation*}
+
+Se obtiene que:
+
+\begin{equation} \label{p3:onon}
+  V_o = \frac{V_i - 2}{4}
+  \quad
+  \quad
+  \mathrm{si}
+  \quad
+  \quad
+  V_i > 14
+\end{equation}

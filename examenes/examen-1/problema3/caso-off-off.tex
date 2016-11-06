@@ -16,7 +16,7 @@
 
 \textbf{Caso: $D_1$ off, $D_2$ off}
 
-Se aplica el estado del diodo.
+Se aplica el estado de los diodos:
 \begin{align*}
   I_{D1} = I_{D2} &= 0
   &
@@ -26,85 +26,70 @@ Se aplica el estado del diodo.
 \end{align*}
 
 \begin{align}
-  V_o &= V_i - 1k I_i - V_{D1} - 6 \label{p3:offoff:vo1}
+  V_o &=
+    \frac{3}{4} V_i
+    - V_{D1}
+    - \frac{11}{2} \label{p3:offoff:vo1}
   \\
-  V_o &= V_i - 3k I_i \label{p3:offoff:vo2}
+  V_o &=
+    \frac{1}{4} V_i
+    + \frac{3}{2} \label{p3:offoff:vo2}
   \\
-  V_o &= V_{D2} - 1k I_i \label{p3:offoff:vo3}
-  \\
-  V_o &= 2 + 1k I_i \label{p3:offoff:vo4}
+  V_o &=
+    - \frac{1}{4} V_i
+    + V_{D2}
+    + \frac{1}{2} \label{p3:offoff:vo3}
 \end{align}
 
-Se obtiene $V_{D1}$ e $V_{D2}$ de \ref{p3:offoff:vo1} y \ref{p3:offoff:vo3}.
+Se despeja $V_{D1}$ de \ref{p3:offoff:vo1} y \ref{p3:offoff:vo2}:
 
 \begin{align*}
-  V_{D1} &= V_i - 1k I_i - V_o - 6
+  \frac{3}{4} V_i - V_{D1} - \frac{11}{2} &=
+  \frac{1}{4} V_i          + \frac{3}{2}
   \\
-  V_{D2} &= V_o + 1k I_i
+  V_{D1} &= \frac{1}{2} V_i - 7
 \end{align*}
 
-Se obtiene $I_i$ de \ref{p3:offoff:vo4}
+Se despeja $V_{D2}$ de \ref{p3:offoff:vo2} y \ref{p3:offoff:vo3}:
 
 \begin{align*}
-  V_o &= 2 + 1k I_i
+  \frac{1}{4} V_i            + \frac{3}{2} &=
+  - \frac{1}{4} V_i + V_{D2} + \frac{1}{2}
   \\
-  1k I_i &= V_o - 2
+  V_{D2} &= \frac{1}{2} V_i + 1
 \end{align*}
 
-Se remplaza $I_i$ en $V_{D1}$ e $V_{D2}$
+
+Se obtiene $V_o(V_i)$ y $V_i(V_o)$ de \ref{p3:offoff:vo2}:
+
+\begin{equation*}
+  V_o = \frac{V_i + 6}{4} \Rightarrow  V_i = 4 V_o - 6
+\end{equation*}
+
+Se obtiene la restricción dada por $V_{D1}$:
 
 \begin{align*}
-  V_{D1} &= V_i - 1k I_i - V_o - 6
-  \\
-  V_{D1} &= V_i - \left(V_o - 2\right) - V_o - 6
-  \\
-  V_{D1} &= V_i - V_o + 2 - V_o - 6
-  \\
-  V_{D1} &= V_i - 2 V_o - 4
+  V_{D1} = \frac{1}{2} V_i - 7 \leq 0
+  \Rightarrow
+  V_i \leq 14
 \end{align*}
+
+Se obtiene la restricción dada por $V_{D2}$:
 
 \begin{align*}
-  V_{D2} &= V_o + 1k I_i
-  \\
-  V_{D2} &= V_o + \left(V_o - 2\right)
-  \\
-  V_{D2} &= 2 V_o - 2
+  V_{D2} = \frac{1}{2} V_i + 1 \leq 0
+  \Rightarrow
+  V_i \leq -2
 \end{align*}
 
-Se obtiene $V_o$ en función de $V_i$ con \ref{p3:offoff:vo2}
+Se obtiene que:
 
-\begin{align*}
-  V_o &= V_i - 3k I_i
-  \\
-  V_o &= V_i - 3 \left(V_o - 2\right)
-  \\
-  V_o &= V_i - 3  V_o + 6
-  \\
-  4 V_o &= V_i + 6
-  \\
-  V_o &= \frac{V_i + 6}{4}
-\end{align*}
-
-Se aplican restricciones para obtener rango de funcionamiento.
-
-\begin{align*}
-  V_{D1} = V_i - 2 V_o - 4 &\leq 0
-  \\
-  V_i - \frac{V_i + 6}{2} &\leq 4
-  \\
-  V_i - \frac{V_i}{2} -3 &\leq 4
-  \\
-  \frac{V_i}{2} &\leq 7
-  \\
-  V_i &\leq 14
-\end{align*}
-
-\begin{align*}
-  V_{D2} = 2 V_o - 2 &\leq 0
-  \\
-  \frac{V_i + 6}{2} &\leq 2
-  \\
-  \frac{V_i}{2} &\leq -1
-  \\
-  V_i &\leq -2
-\end{align*}
+\begin{equation} \label{p3:offoff}
+  V_o = \frac{V_i + 6}{4}
+  \quad
+  \quad
+  \mathrm{si}
+  \quad
+  \quad
+  V_i \leq 2
+\end{equation}

@@ -14,29 +14,127 @@
 
 \textbf{Ecuaciones para Vo}
 
-Sea $I_i$ la corriente que pasa por la fuente sinusoidal $V_i$.
+Sea $I_i$ la corriente que pasa por la fuente sinusoidal $V_i$, se formulan las
+ecuaciones por cuatro rutas hacia $V_o$:
 
 % Todas las rutas comienzan en el negativo de V_o.
 
 \begin{align}
   % Ruta por D1.
-  V_o &= V_i - 1k I_i - V_{D1} - 1k I_{D1} - 6 \label{p3:inicio:vo1}
+  V_o &= V_i - 1k I_i - V_{D1} - 1k I_{D1} - 6 \label{p3:inicio:vo1_pre}
   \\
   \nonumber \\
   % Ruta por las 3 resistencias
   V_o &= V_i - 1k I_i - 1k (I_i - I_{D1}) - 1k (I_i - I_{D1} - I_{D2}) \nonumber
   \\
-  V_o &= V_i - 3k I_i + 2k I_{D1} + 1k I_{D2} \label{p3:inicio:vo2}
+  V_o &= V_i - 3k I_i + 2k I_{D1} + 1k I_{D2} \label{p3:inicio:vo2_pre}
   \\
   \nonumber \\
   % Ruta por D2
   V_o &= 1k I_{D2} + V_{D2} - 1k (I_i - I_{D1} - I_{D2}) \nonumber
   \\
-  V_o &= 2k I_{D2} + V_{D2} - 1k I_i + 1k I_{D1} \label{p3:inicio:vo3}
+  V_o &= 2k I_{D2} + V_{D2} - 1k I_i + 1k I_{D1} \label{p3:inicio:vo3_pre}
   \\
   \nonumber \\
   % Ruta por fuente de 2V.
   V_o &= 2 + 1k (I_i - I_{D2}) \nonumber
   \\
-  V_o &= 2 + 1k I_i - 1k I_{D2} \label{p3:inicio:vo4}
+  V_o &= 2 + 1k I_i - 1k I_{D2} \label{p3:inicio:vo4_pre}
+\end{align}
+
+Se despeja $I_i$ de \ref{p3:inicio:vo2_pre} y \ref{p3:inicio:vo4_pre}:
+
+\begin{align}
+  V_i - 3k I_i + 2k I_{D1} + 1k I_{D2} &= 2 + 1k I_i - 1k I_{D2} \nonumber
+  \\
+  4k I_i &= V_i + 2k I_{D1} + 2k I_{D2} - 2 \label{p3:inicio:ii}
+\end{align}
+
+Se utiliza \ref{p3:inicio:ii} en \ref{p3:inicio:vo1_pre},
+\ref{p3:inicio:vo2_pre}, \ref{p3:inicio:vo3_pre} y \ref{p3:inicio:vo4_pre} para
+dejar estas fórmulas en términos $V_i$ y, los voltajes y corrientes
+de los diodos:
+
+\begin{align}
+  % Ruta por D1.
+  V_o &=
+    V_i
+    - \frac{1}{4} \left( V_i + 2k I_{D1} + 2k I_{D2} - 2 \right)
+    - V_{D1}
+    - 1k I_{D1}
+    - 6 \nonumber
+  \\
+  V_o &=
+    \frac{3}{4} V_i
+    - V_{D1}
+    - 1.5k I_{D1}
+    - 500 I_{D2}
+    - \frac{11}{2} \label{p3:inicio:vo1_pre2}
+  \\
+  \nonumber \\
+  % Ruta por las 3 resistencias
+  V_o &=
+    V_i
+    - \frac{3}{4} \left( V_i + 2k I_{D1} + 2k I_{D2} - 2 \right)
+    + 2k I_{D1}
+    + 1k I_{D2} \nonumber
+  \\
+  V_o &=
+    \frac{1}{4} V_i
+    + 500 I_{D1}
+    - 500 I_{D2}
+    + \frac{3}{2} \label{p3:inicio:vo2_pre2}
+  \\
+  \nonumber \\
+  % Ruta por D2
+  V_o &=
+    2k I_{D2}
+    + V_{D2}
+    - \frac{1}{4} \left( V_i + 2k I_{D1} + 2k I_{D2} - 2 \right)
+    + 1k I_{D1} \nonumber
+  \\
+  V_o &=
+    1.5k I_{D2}
+    + V_{D2}
+    - \frac{1}{4} V_i
+    + 500 I_{D1}
+    + \frac{1}{2} \label{p3:inicio:vo3_pre2}
+  \\
+  \nonumber \\
+  % Ruta por fuente de 2V.
+  V_o &=
+    2
+    + \frac{1}{4} \left( V_i + 2k I_{D1} + 2k I_{D2} - 2 \right)
+    - 1k I_{D2} \nonumber
+  \\
+  V_o &=
+    \frac{3}{2}
+    + \frac{1}{4} V_i
+    - 500 I_{D2}
+    + 500 I_{D1} \label{p3:inicio:vo4_pre2}
+\end{align}
+
+Se nota que \ref{p3:inicio:vo2_pre2} y \ref{p3:inicio:vo4_pre2} son la misma
+ecuación, por lo que ahora se tiene solo 3 ecuaciones:
+
+\begin{align}
+  V_o &=
+    \frac{3}{4} V_i
+    - 1.5k I_{D1}
+    - V_{D1}
+    - 500 I_{D2}
+    - \frac{11}{2} \label{p3:inicio:vo1}
+  \\
+  V_o &=
+    \frac{1}{4} V_i
+    + 500 I_{D1}
+    - 500 I_{D2}
+    + \frac{3}{2} \label{p3:inicio:vo2}
+  \\
+  V_o &=
+    - \frac{1}{4} V_i
+    + 500 I_{D1}
+    + 1.5k I_{D2}
+    + V_{D2}
+    + \frac{1}{2} \label{p3:inicio:vo3}
 \end{align}

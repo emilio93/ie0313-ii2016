@@ -1,4 +1,3 @@
-
 \usubsection{Análisis DC}
 
 \begin{figure}[H]
@@ -73,155 +72,64 @@
   \end{center}
 \end{figure}
 
-Como el emisor del transistor $T_2$ está en tierra(i.e. $V_{E2} = 0$), la base
-del mismo transistor está en $V_{B2} = V_{E2} - V_{EB} = 0 - 0.7 = -0.7 V$, este
-es el mismo voltaje al cual se encuentra el emisor del transistor $T_3$, así que
-la base del mismo transistor está en $V_{B3} = V_{B2} + V_{EB} = -0.7 + 0.7 = 0$.
-
-Ahora obtenemos el valor de la corriente de base del $T_3$:
+Se comienza averigüando la corriente $I_{E3}$:
 
 \begin{equation*}
-  I_{B3} = \frac{30V - V_{B3}}{1M\Omega} = \frac{30V}{1M\Omega} = 30\mu A
+  I_{E3} = \beta I_{1M\Omega} = 100 \cdot \frac{30 - 0.7 + 0.7}{1M} = 3mA
 \end{equation*}
 
-Según las ecuaciones del transistor obtenemos $I_{C3}$:
+Se aplica LCK en el nodo de $I_{E3}$, $I_{B2}$ y $R_{E3}$, para obtener la
+ecuación de $R_{E3}$:
 
 \begin{equation*}
-  I_{C3} = \beta I_{B3} = 100 \cdot 30\mu A = 3mA
+  I_{E3} + I_{B2} = I_{R_{E3}} \Rightarrow 3mA + I_{B2} = \frac{-0.7 - (-30)}{R_{E3}}
+\end{equation*}
+\begin{equation*}
+  R_{E3} = \frac{29.3}{3mA + I_{B2}}
 \end{equation*}
 
-Y también podemos aproximar $I_{E3} \approx I_{C3}$ porque $\beta$ es grande.
+Se diseña para que la corriente $I_{B2}$ sea la igual a
+$I_{B1} = \frac{I_{C1}}{\beta} \approx \frac{I_{E1}}{100} = 1mA$. Se
+obtiene que $R_{E3} = \frac{29.3}{4mA} = 7325\Omega$.
 
-Aplicamos LCK en el nodo que une $R_{E3}$ y la base de $T_2$.
+Se sabe que $I_{C2} = \beta I_{B2} = 100mA$, entonces se aplica LCK en el nodo
+de $I_{C2}$, $I_{B1}$ y $I_{R_{C2}}$, para obtener la ecuación de $R_{C2}$:
 
 \begin{equation*}
-  I_{E3} = I_{R_{E3}} - I_{B2}\Rightarrow
-  I_{B2} = I_{R_{E3}} - I_{E3} = \frac{0 - 0.7 - (-30)}{R_{E3}} - 3mA
+  I_{C2} + I_{B1} = I_{R_{C2}} \Rightarrow 100mA + 1mA = \frac{60 - I_{E1} R_{E1} - 0.7}{R_{C2}}
 \end{equation*}
-
 \begin{equation*}
-  I_{B2} = \frac{29.3V}{R_{E3}} - 3mA
+  R_{C2} = \frac{59.3 - 100mA \cdot R_{E1}}{101mA}
 \end{equation*}
 
-Ahora tenemos una restricción para $R_{E3}$
+$I_{E1}$ se ha utilizado en $100mA$ porque se quiere la Máxima Excursión
+Simétrica que se da al tener esta corriente.
 
+Para cuando $I_{C1} = 0$, se tendrá que
+$V_{CE1} = 60V$(LTK), y cuando $V_{CE1} = 0$, $I_{C1} = 2 I_{E1} = 200mA$. Con
+esta información se obtiene la recta de carga:
 \begin{equation*}
-  I_{B2} = \frac{29.3V}{R_{E3}} - 3mA > 0 \Rightarrow
-  \frac{29.3V}{R_{E3}} > 3mA
+  I_{C1}(V_{CE1}) = 0.2 - \frac{1}{300} V_{CE1}
 \end{equation*}
-
 \begin{equation*}
-  R_{E3} < \frac{29300}{3} \approx 9767\Omega
+  V_{CE1}(I_{C1}) = 60 - 300 I_{C1}
 \end{equation*}
 
-Según las ecuaciones del transistor obtenemos $I_{C2}$:
+Para lograr $V_{CE1}(I_{C1} = 100mA) = 30V$, la resistencia $R_{E1}$ debe ser de
+$300\Omega$(LTK).
 
+Finalmente se utiliza el valor encontrado de $R_{E1}$ para obtener $R_{C2}$:
 \begin{equation*}
-  I_{C2} = \beta I_{B2} =
-  100 \cdot \left( \frac{29.3V}{R_{E3}} - 3mA \right) =
-  \frac{2930}{R_{E3}} - 0.3
-\end{equation*}
-\\
-
-Aplicamos LCK ahora en el nodo que une $R_{C2}$ y la base de $T_1$:
-\begin{equation*}
-  I_{C2} = I_{RC2} - I_{B1} \Rightarrow I_{B1} = I_{RC2} - I_{C2}
+  R_{C2} = \frac{59.3 - 100mA \cdot R_{E1}}{101mA} = \frac{29.3}{0.101} \approx 290\Omega
 \end{equation*}
 
-\begin{equation*}
-  I_{B1} = \frac{30 - I_{E1} R_{E1} - 0.7}{R_{C2}} - \frac{2930}{R_{E3}} + 0.3
-\end{equation*}
+El valor de $r_i$, así como el de $C$, no afectan para obtener la Máxima
+Excursión Simétrica según lo solicitado.
 
-Según las ecuaciones del transistor obtenemos $I_{C1}$:
+\usubsection{Resuesta}
 
-\begin{equation*}
-  I_{C1} = \beta I_{B1} =
-  100 \cdot \left( \frac{30 - I_{E1} R_{E1} - 0.7}{R_{C2}} - \frac{2930}{R_{E3}} + 0.3 \right)
-\end{equation*}
-
-\begin{equation*}
-  I_{C1} = \frac{2930 - 100 I_{E1} R_{E1}}{R_{C2}} - \frac{293k}{R_{E3}} + 30
-\end{equation*}
-
-Sabemos que $V_o = V_{EC1}$ y que $I_{E1} \approx I_{C1}$:
-
-\begin{equation*}
-  V_{EC1} =
-  30 - I_{E1} R_{E1} - (-30) =
-  60 - I_{C1} R_{E1} =
-  60 - \frac{2930 R_{E1} - 100 I_{E1} R_{E1}^2}{R_{C2}} - \frac{293k R_{E1}}{R_{E3}} + 30 R_{E1}
-\end{equation*}
-
-Despejamos $I_{E1}$:
-
-\begin{equation*}
-  \frac{100 R_{E1}^2}{R_{C2}} I_{E1} = 60 - \frac{2930 R_{E1}}{R_{C2}} - \frac{293k R_{E1}}{R_{E3}} + 30 R_{E1} - V_{CE1}
-\end{equation*}
-
-\begin{equation*}
-  I_{E1} =
-  \frac{R_{C2}}{100 R_{E1}^2}
-  \left(
-    60
-    - \frac{2930 R_{E1}}{R_{C2}}
-    - \frac{293k R_{E1}}{R_{E3}}
-    + 30 R_{E1} - V_{CE1}
-  \right)
-\end{equation*}
-
-\begin{equation*}
-  I_{E1} =
-  \frac{60 R_{C2}}{100 R_{E1}^2}
-  - \frac{2930}{100 R_{E1}}
-  - \frac{293k R_{C2}}{100 R_{E1} R_{E3}}
-  + \frac{30 R_{C2}}{100 R_{E1}}
-  - V_{CE1} \frac{R_{C2}}{100 R_{E1}^2} \approx I_{C1}
-\end{equation*}
-
-\begin{equation*}
-  \Rightarrow I_{CQ1} =
-  \left(
-    \frac{3 R_{C2}}{5 R_{E1}^2}
-    + \frac{3 R_{C2} - 293}{10 R_{E1}}
-    + \frac{2930 R_{C2}}{R_{E1} R_{E3}}
-  \right)
-  - V_{CEQ1} \frac{R_{C2}}{100 R_{E1}^2}
-\end{equation*}
-
-\begin{equation*}
-  \Rightarrow I_{CQ1} =
-  \left(
-    \frac{3 R_{C2}}{5 R_{E1}^2}
-    + \frac{3 R_{C2} - 293}{10 R_{E1}}
-    + \frac{2930 R_{C2}}{R_{E1} R_{E3}}
-  \right)
-  - V_{CEQ1} \frac{R_{C2}}{100 R_{E1}^2}
-\end{equation*}
-
-Cuando $I_{C1} = 0$(caso de corte) se tiene inevitablemente que $I_{CE1} = 60V$.
-
-Entonces para Máxima Excursión Simétrica se tiene que:
-
-\begin{itemize}
-  \item $I_{CQ1}(V_{CEQ1}=0) = 200mA$
-  \item $V_{CEQ1}(I_{CQ1}=0) = 60V$
-\end{itemize}
-
-Se deduce la recta de carga DC $I_{CQ} = 0.2 - \frac{1}{300} V_{CEQ}$. Para que
-el punto de operación Q esté a $100mA$ debe darse que $V_{CEQ} = 30V$, por lo
-que $R_{E1} = 300\Omega$.
-
-Obtenemos a partir de $I_CQ1$ y la recta de carga el siguiente sistema:
-
-\begin{empheq}[left=\empheqlbrace]{align*}
-  & 0.2 = \frac{R_{C2}}{150k} + \frac{3 R_{C2} - 293}{3k} + \frac{293 R_{C2}}{30 R_{E3}} \\
-  & \frac{1}{300} = \frac{R_{C2}}{9M}
-\end{empheq}
-
-De la segunda ecuación obtenemos $R_{C2} = 30k\Omega$ y se reformula la primer ecuación.
-
-\begin{equation*}
-  0.2 =
-  \frac{30k}{150k} + \frac{90k - 293}{3k} + \frac{8.79M}{30 R_{E3}} =
-  \frac{90307}{3000} + \frac{293k}{R_{E3}}
-\end{equation*}
+\begin{align*}
+  R_{E1} &= 300 \Omega \\
+  R_{C2} &= 290 \Omega \\
+  R_{E3} &= 7325 \Omega
+\end{align*}

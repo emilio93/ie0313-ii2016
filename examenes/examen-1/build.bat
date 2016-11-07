@@ -1,0 +1,2 @@
+pdflatex examen
+pdflatex examen

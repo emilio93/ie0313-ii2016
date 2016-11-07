@@ -1,0 +1,45 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\documentclass[12pt]{article}
+
+\input{compartido/paquetes.tex}
+\input{compartido/configuracion.tex}
+\input{compartido/comandos.tex}
+
+\begin{document}
+
+  \pagenumbering{gobble}
+
+  \portada
+  {Tarea de Simulación \#1}
+  {7 de Noviembre, 2016}
+  {
+    \textsc{\large David Azofeifa Rivera}\\
+    \textsc{\large B40754}\\
+    [0.25in]
+    \textsc{\large Emilio Javier Rojas Álvarez}\\
+    \textsc{\large B15680}\\
+    [0.5in]
+  }
+
+  \usection{Problema}
+  \input{problema}
+
+  \usection{Solución}
+  \input{solucion}
+
+  \usection{Simulación}
+  \input{simulacion}
+\end{document}

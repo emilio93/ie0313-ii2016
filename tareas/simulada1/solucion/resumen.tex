@@ -1,0 +1,75 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\bigskip
+
+\textbf{Resumen}
+
+\begin{equation*}
+  V_o(V_i)=
+  \begin{cases}
+    \frac{V_i + 6}{4} \quad
+      \phantom{\frac{V_i + 10}{8}\frac{V_i - 2}{4}}
+      \text{si} \quad V_i \leq 2
+      \phantom{\text{si} \quad -2 < V_i \leq 14\text{si} \quad V_i > 14}
+      (\ref{p3:offoff})
+    \\
+    \frac{V_i + 10}{8} \quad
+      \phantom{\frac{V_i + 6}{4}\frac{V_i - 2}{4}}
+      \text{si} \quad -2 < V_i \leq 14
+      \phantom{\text{si} \quad V_i \leq -2\text{si} \quad V_i > 14}
+      (\ref{p3:offon})
+    \\
+    \frac{V_i - 2}{4} \quad
+      \phantom{\frac{V_i + 6}{4}\frac{V_i + 10}{8}}
+      \text{si} \quad V_i > 14
+      \phantom{\text{si} \quad V_i \leq 2\text{si} \quad -2 < V_i \leq 14}
+      (\ref{p3:onon})
+  \end{cases}
+\end{equation*}
+
+\begin{figure}[H]
+  \includegraphics
+    [trim={1.7cm 8.1cm 1.7cm 8.1cm},clip,width=\textwidth]
+    {solucion/img/vi-vo-offoff.pdf}
+  \caption{Caso $D1$ off, $D2$ off: $\frac{V_i + 6}{4}$, $V_i \leq -2$. (\ref{p3:offoff})}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics
+    [trim={1.7cm 8.1cm 1.7cm 8.1cm},clip,width=\textwidth]
+    {solucion/img/vi-vo-offon.pdf}
+    \caption{Caso $D1$ off, $D2$ on: $\frac{V_i + 10}{8}$, $-2 < V_i \leq 14$. (\ref{p3:offon})}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics
+    [trim={1.7cm 8.1cm 1.7cm 8.1cm},clip,width=\textwidth]
+    {solucion/img/vi-vo-onon.pdf}
+    \caption{Caso $D1$ on, $D2$ on: $\frac{V_i - 2}{4}$, $V_i > 14$. (\ref{p3:onon})}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics
+    [trim={1.7cm 8.1cm 1.7cm 8.1cm},clip,width=\textwidth]
+    {solucion/img/vi-vo-casos.pdf}
+    \caption{Todos los casos}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics
+    [trim={1.7cm 8.1cm 1.7cm 8.1cm},clip,width=\textwidth]
+    {solucion/img/vi-vo.pdf}
+    \caption{$V_i$ y $V_o$}
+\end{figure}

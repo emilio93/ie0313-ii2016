@@ -1,0 +1,100 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\bigskip
+
+\textbf{Caso: $D_1$ off, $D_2$ on}
+
+Se aplica el estado de los diodos:
+
+\begin{align*}
+  I_{D1} = V_{D2} &= 0
+  &
+  I_{D2} &> 0
+  &
+  V_{D1} &\leq 0
+\end{align*}
+
+\begin{align}
+  V_o &=
+    \frac{3}{4} V_i
+    - V_{D1}
+    - 500 I_{D2}
+    - \frac{11}{2} \label{p3:offon:vo1}
+  \\
+  V_o &=
+    \frac{1}{4} V_i
+    - 500 I_{D2}
+    + \frac{3}{2} \label{p3:offon:vo2}
+  \\
+  V_o &=
+    - \frac{1}{4} V_i
+    + 1.5k I_{D2}
+    + \frac{1}{2} \label{p3:offon:vo3}
+\end{align}
+
+Se despeja $I_{D2}$ de \ref{p3:offon:vo2} y \ref{p3:offon:vo3}:
+
+\begin{align*}
+  \frac{1}{4} V_i   - 500 I_{D2}  + \frac{3}{2} &=
+  - \frac{1}{4} V_i + 1.5k I_{D2} + \frac{1}{2}
+  \\
+  2k I_{D2} &= \frac{1}{2} V_i + 1
+\end{align*}
+
+Se despeja $V_{D1}$ de \ref{p3:offon:vo1} y \ref{p3:offon:vo2}:
+
+\begin{align*}
+  \frac{3}{4} V_i - V_{D1} - 500 I_{D2} - \frac{11}{2} &=
+  \frac{1}{4} V_i          - 500 I_{D2} + \frac{3}{2}
+  \\
+  V_{D1} &= \frac{1}{2} V_i - 7
+\end{align*}
+
+
+Se obtiene $V_o(V_i)$ y $V_i(V_o)$ de \ref{p3:offon:vo3}:
+
+\begin{align*}
+  V_o &= - \frac{1}{4} V_i + \frac{3}{4} \left( \frac{1}{2} V_i + 1 \right) + \frac{1}{2}
+  \\
+  V_o &= \frac{1}{8} V_i + \frac{5}{4} = \frac{V_i + 10}{8} \Rightarrow V_i = 8 V_o - 10
+\end{align*}
+
+Se obtiene la restricción dada por $I_{D2}$:
+
+\begin{align*}
+  2k I_{D2} = \frac{1}{2} V_i + 1 > 0
+  \Rightarrow
+  V_i > -2
+\end{align*}
+
+Se obtiene la restricción dada por $V_{D1}$:
+
+\begin{align*}
+  V_{D1} = \frac{1}{2} V_i - 7 \leq 0
+  \Rightarrow
+  V_i \leq 14
+\end{align*}
+
+Se obtiene que:
+
+\begin{equation} \label{p3:offon}
+  V_o = \frac{V_i + 10}{8}
+  \quad
+  \quad
+  \mathrm{si}
+  \quad
+  \quad
+  -2 < V_i \leq 14
+\end{equation}

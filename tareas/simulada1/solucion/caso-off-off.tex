@@ -1,0 +1,95 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\bigskip
+
+\textbf{Caso: $D_1$ off, $D_2$ off}
+
+Se aplica el estado de los diodos:
+\begin{align*}
+  I_{D1} = I_{D2} &= 0
+  &
+  V_{D1} &\leq 0
+  &
+  V_{D2} &\leq 0
+\end{align*}
+
+\begin{align}
+  V_o &=
+    \frac{3}{4} V_i
+    - V_{D1}
+    - \frac{11}{2} \label{p3:offoff:vo1}
+  \\
+  V_o &=
+    \frac{1}{4} V_i
+    + \frac{3}{2} \label{p3:offoff:vo2}
+  \\
+  V_o &=
+    - \frac{1}{4} V_i
+    + V_{D2}
+    + \frac{1}{2} \label{p3:offoff:vo3}
+\end{align}
+
+Se despeja $V_{D1}$ de \ref{p3:offoff:vo1} y \ref{p3:offoff:vo2}:
+
+\begin{align*}
+  \frac{3}{4} V_i - V_{D1} - \frac{11}{2} &=
+  \frac{1}{4} V_i          + \frac{3}{2}
+  \\
+  V_{D1} &= \frac{1}{2} V_i - 7
+\end{align*}
+
+Se despeja $V_{D2}$ de \ref{p3:offoff:vo2} y \ref{p3:offoff:vo3}:
+
+\begin{align*}
+  \frac{1}{4} V_i            + \frac{3}{2} &=
+  - \frac{1}{4} V_i + V_{D2} + \frac{1}{2}
+  \\
+  V_{D2} &= \frac{1}{2} V_i + 1
+\end{align*}
+
+
+Se obtiene $V_o(V_i)$ y $V_i(V_o)$ de \ref{p3:offoff:vo2}:
+
+\begin{equation*}
+  V_o = \frac{V_i + 6}{4} \Rightarrow  V_i = 4 V_o - 6
+\end{equation*}
+
+Se obtiene la restricción dada por $V_{D1}$:
+
+\begin{align*}
+  V_{D1} = \frac{1}{2} V_i - 7 \leq 0
+  \Rightarrow
+  V_i \leq 14
+\end{align*}
+
+Se obtiene la restricción dada por $V_{D2}$:
+
+\begin{align*}
+  V_{D2} = \frac{1}{2} V_i + 1 \leq 0
+  \Rightarrow
+  V_i \leq -2
+\end{align*}
+
+Se obtiene que:
+
+\begin{equation} \label{p3:offoff}
+  V_o = \frac{V_i + 6}{4}
+  \quad
+  \quad
+  \mathrm{si}
+  \quad
+  \quad
+  V_i \leq -2
+\end{equation}

@@ -1,0 +1,262 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\usection{Problema 2}
+
+2. (12.5 ptos). Encuentre los valores del puntos de operación para cada
+transistor. $\beta_1 = 40$ y $\beta_2 = 50$. $T3$ es $5484$
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0, 1)
+      to [R, l=$9240k\Omega$] (0, 4)
+      to [R, l=$10M\Omega$] (0, 6)
+      to [short] (9, 6)
+      to [R, l=$5\Omega$] (9, 3.5)
+      to [open] (9, 2.5)
+      to [short] (9, 1)
+      to [short] (0,1)
+      ;
+
+      \draw (3, 1)
+      to [R, l=$6k\Omega$] (3, 3.5)
+      to [open] (3, 4.5)
+      to [short, -o] (3, 7)
+      to [short, l=$30V$] (3, 7)
+      ;
+
+      \draw (6, 1)
+      to [R, l=$100\Omega$] (6, 3)
+      to [open] (6, 4)
+      to [short] (6, 5)
+      to [short] (7, 5)
+      to [short] (7, 4.5)
+      ;
+
+      \draw (3,0)
+      to [short, l=$-30V$] (3, 0)
+      to [short, o-] (3, 1)
+      ;
+
+      \draw (3, 4) node [njfet] {};
+      \draw (3.8, 4) to [open, l=$T3$] (3.8, 4);
+      \draw (0, 3.73) to [short] (2.5, 3.73);
+
+      \draw (6, 3.5) node [pnp] {};
+      \draw (6.8, 3.5) to [open, l=$T2$] (6.8, 3.5);
+      \draw (3, 3.5) to [short] (5.5, 3.5);
+
+      \draw (9, 3) node [npn] {};
+      \draw (9.8, 3) to [open, l=$T1$] (9.8, 3);
+      \draw (6, 3) to [short] (8.5, 3);
+
+      \draw (7, 4.5) node [ground] {};
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{l|l|ll|c|c|c|c}
+      \multicolumn{2}{c}{\textbf{Electrical Characteristics}} & \multicolumn{6}{l}{TA=25°C unless otherwise noted} \\
+      \midrule
+        \multicolumn{1}{c|}{\textbf{Symbol}} &
+        \multicolumn{1}{c|}{\textbf{Parameter}} &
+        \multicolumn{2}{c|}{\textbf{Test Conditions}} &
+        \textbf{Min} &
+        \textbf{Typ} &
+        \textbf{Max} &
+        \textbf{Units}
+      \\
+      \midrule
+      \multicolumn{8}{l}{OFF CHARACTERISTICS} \\
+      \midrule
+        $V_{(BR)GSS}$ &
+        Gate-Source Breakdown Voltage &
+        \multicolumn{2}{l|}{$I_G = - 1.0\mu A$ , $V_{DS} = 0}$ &
+        $-25$ & & &
+        $V$
+      \\
+      \midrule
+        \multirow{2}[2]{*}{$I_{GSS}$} &
+        \multirow{2}[2]{*}{Gate Reverse Current} &
+        \multicolumn{2}{l|}{$V_{GS} = - 20 V$, $V_{DS} = 0$} & & &
+        $-1.0$ &
+        $nA$
+      \\
+        & &
+        \multicolumn{2}{l|}{$V_{GS} = - 20 V$, $V_{DS} = 0$, $T_A = 100\degree C$} & & &
+        -0.1 &
+        $\mu A$
+      \\
+      \midrule
+        \multirow{3}[2]{*}{$V_{GS(off)}$} &
+        \multirow{3}[2]{*}{Gate-Source Cutoff Voltage} &
+        \multirow{3}[2]{*}{$V_{DS} = 15 V$, $I_D = 10 nA$} &
+        \textbf{5484} &
+         -0.3 & &
+         -3.0 &
+         V
+       \\
+        & & &
+        \textbf{5485} &
+        -0.5 & &
+        -4.0 &
+        V
+      \\
+        & & &
+        \textbf{5486} &
+        -2.0 & &
+        -6.0 &
+        V
+      \\
+      \midrule
+      \multicolumn{8}{l}{ON CHARACTERISTICS} \\
+      \midrule
+        \multirow{3}[2]{*}{$I_{DSS}$} &
+        \multirow{3}[2]{*}{Zero-Gate Voltage Drain Current*} &
+        \multirow{3}[2]{*}{$V_{DS} = 15 V$, $V_{GS} = 0$} &
+        \textbf{5484} &
+        1.0 & &
+        5.0 &
+        $mA$
+      \\
+        & & &
+        \textbf{5485} &
+        4.0 & &
+        10 &
+        $mA$
+      \\
+        & & &
+        \textbf{5486} &
+        8.0 & &
+        20 &
+        $mA$
+      \\
+      \bottomrule
+      \end{tabular}
+    }
+\end{table}
+
+%
+% \textbf{\large Electrical Characteristics }{\tiny TA = 25°C unless otherwise noted}
+% \begin{center}
+%   \begin{tabular}{ c | c | c  c | c | c | c | c }
+%     \hline
+%       \textbf{Symbol} &
+%       \textbf{Parameter} &
+%       \textbf{Test Conditions} & &
+%       \textbf{Min} &
+%       \textbf{Typ} &
+%       \textbf{Max} &
+%       \textbf{Units}
+%     \\
+%     \hline
+%       \multicolumn{8}{l}{}\\
+%       \multicolumn{8}{l}{OFF CHARACTERISTICS}
+%     \\
+%     \hline
+%       $V_{(BR)GSS}$ &
+%       \tiny{Gate-Source Breakdown Voltage} &
+%       \tiny{$I_G = -1.0 \mu A$ $V_{DS} = 0$} &
+%       &
+%       -25 &
+%       &
+%       &
+%       V
+%     \\
+%     \hline
+%       $I_{GSS}$ &
+%       \tiny{Gate Reverse Current} &
+%       \tiny{$V_{GS} = -20.0 V, V_{DS} = 0$} &
+%       &
+%       &
+%       &
+%       -1.0&
+%       $nA$
+%     \\
+%       &
+%       &
+%       \tiny{$V_{GS} = -20.0 V, V_{DS} = 0, T_A = 100 \degree C$} &
+%       &
+%       &
+%       &
+%       -0.2&
+%       $\mu A$
+%     \\
+%     \hline
+%       $V_{GS_{(Off)}}$ &
+%       \tiny{Gate-Source Cutoff Voltage} &
+%       \tiny{$V_{DS} = 15 V, I_D = 10 nA$} &
+%       \tiny{\textbf{5484}}&
+%       -0.3&
+%       &
+%       -3.0&
+%       V
+%     \\
+%       &
+%       &
+%       &
+%       \tiny{\textbf{5485}}&
+%       -0.5&
+%       &
+%       -4.0&
+%       V
+%     \\
+%       &
+%       &
+%       &
+%       \tiny{\textbf{5486}}&
+%       -2.0&
+%       &
+%       -6.0&
+%       V
+%     \\
+%     \hline
+%       \multicolumn{8}{l}{}\\
+%       \multicolumn{8}{l}{ON CHARACTERISTICS}
+%     \\
+%     \hline
+%       $I_{DSS}$ &
+%       \tiny{Zero-Gate Voltage Drain Current*} &
+%       \tiny{$V_{DS} = 15 V, V_{GS} = 0$} &
+%       \tiny{\textbf{5484}}&
+%       1.0&
+%       &
+%       5.0&
+%       mA
+%     \\
+%       &
+%       &
+%       &
+%       \tiny{\textbf{5485}}&
+%       4.0&
+%       &
+%       10&
+%       mA
+%     \\
+%       &
+%       &
+%       &
+%       \tiny{\textbf{5486}}&
+%       8.0&
+%       &
+%       20&
+%       mA
+%     \\
+%     \hline
+%   \end{tabular}
+% \end{center}

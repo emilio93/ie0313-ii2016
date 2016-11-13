@@ -1,0 +1,101 @@
+%   Copyright 2016 Emilio Rojas
+%
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
+%
+%       http://www.apache.org/licenses/LICENSE-2.0
+%
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
+
+\usubsection{Solución}
+
+\begin{align*}
+  I_{6k\Omega} &= \frac{-0.7V - (-30V)}{6k\Omega}
+  = \frac{293}{60000} \approx 4.88mA
+  &
+  I_{100\Omega} &= \frac{0.7V}{100\Omega} = 7mA
+\end{align*}
+
+\begin{align*}
+  I_{B1} &= I_{C2} - I_{100\Omega}
+  &
+  I_{C1} &= \beta_{1} I_{B1}
+  &
+  V_{CE1} &= 30V - 5\Omega I_{C1} - (-30V) = 60V - 5\Omega I_{C1}
+  \\
+  I_{B2} &= I_{6k\Omega} - I_{DS}
+  &
+  I_{C2} &= \beta_{2} I_{B2}
+  &
+  V_{EC2} &= -0.7V - (-30V) = 29.3V
+\end{align*}
+
+\begin{align*}
+  V_{GG}
+  &= \frac{(30V - (-30V)) \cdot 9240k\Omega}{10M\Omega + 9240k\Omega} - 30V
+  = - \frac{570}{481} \approx -1.185V
+\end{align*}
+
+\begin{align*}
+  V_{GS} &= V_{GG} - V_{SS} = - \frac{570}{481} V - (-0.7 V) = - \frac{2333}{4810} \approx -0.485V
+  &
+  I_{DS} &= I_{P0} \left( 1 + \frac{V_{GS}}{V_{P0}} \right)^2
+\end{align*}
+
+\begin{align*}
+  I_{DS_{max}} &= 0.005 \left( 1 + \frac{- \frac{2333}{4810}}{3} \right)^2 \approx 3.51mA
+\end{align*}
+
+\begin{align*}
+  I_{B2} &= I_{6k\Omega} - I_{DS_{max}} \approx 1.37mA
+  &
+  I_{C2} &= \beta_2 I_{B2} \approx 68.47mA
+  \\
+  I_{B1} &= I_{C2} - I_{100\Omega} \approx 61.47mA
+  &
+  I_{C1} &= \beta_1 I_{B1} \approx 2.46A
+  \\
+  V_{CE1} &= 60 - 5\Omega I_{C1} \approx 47.71V
+\end{align*}
+
+\begin{align*}
+  I_{DS_{min}} &= 0.001 \left( 1 + \frac{- \frac{2333}{4810}}{0.3} \right)^2 \approx 380.41\mu A
+\end{align*}
+\begin{align*}
+  I_{B2} &= I_{6k\Omega} - I_{DS_{min}} \approx 4.50mA
+  &
+  I_{C2} &= \beta_2 I_{B2} \approx 225.15mA
+  \\
+  I_{B1} &= I_{C2} - I_{100\Omega} \approx 218.15mA
+  &
+  I_{C1} &= \beta_1 I_{B1} \approx 8.73A
+  \\
+  V_{CE1} &= 60 - 5\Omega I_{C1} \approx 16.37V
+\end{align*}
+
+\usubsubsection{Resumen}
+
+\textbf{Máximo $I_{DS}$}
+
+\begin{align*}
+  T_1 &: V_{CE1} = 47.71V, I_{C1} = 2.46A
+  \\
+  T_2 &: V_{EC2} = 29.3V, I_{C2} = 68.47mA
+  \\
+  T_3 &: V_{GS} = -0.485V, I_C = 3.51mA
+\end{align*}
+
+\textbf{Mínimo $I_{DS}$}
+
+\begin{align*}
+  T_1 &: V_{CE1} = 16.37V, I_{C1} = 8.73A
+  \\
+  T_2 &: V_{EC2} = 29.3V, I_{C2} = 225.15mA
+  \\
+  T_3 &: V_{GS} = -0.485V, I_C = 380.41 \mu A
+\end{align*}

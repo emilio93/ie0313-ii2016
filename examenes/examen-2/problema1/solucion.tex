@@ -1,0 +1,195 @@
+\usubsection{Solución parte a}
+
+Se analiza en DC puesto que se solicitan valores de $V_{CE}$ y $I_C$.
+
+\begin{figure}[H]
+  \centering
+  \begin{circuitikz}
+    \draw(0, 0) node [ground] {};
+    \draw(0, 0)
+    to [R, l=$610\Omega$] (0, 2)
+    to [short] (0, 2.5)
+    to [open] (1, 2.5) to [short] (0, 2.5)
+    to [short] (0, 3)
+    to [R, l=$513\Omega$] (0, 5.5)
+    to [short] (1.5, 5.5)
+    to [open] (1.5, 6) to [open, l=$14V$] (1.5, 6) to [short, o-] (1.5, 5.5)
+    to [R, l_=$10\Omega$] (1.5, 3)
+    to [open] (1.5, 2.5) node [npn] {} to [open] (1.5, 2)
+    to [R, l_=$10\Omega$] (1.5, 0)
+    to [short] (0, 0)
+    ;
+
+    \draw(5.5, 0) node [ground] {};
+    \draw(6.5, 0) node [ground] {};
+    \draw(3.2, 2.5) to [open, l=$14V$] (3.3, 2.5)
+    to [R, o-, l=$513\Omega$] (5.5, 2.5)
+    ;
+    \draw(5.5, 0)
+    to [R, l=$610\Omega$] (5.5, 2)
+    to [short] (5.5, 2.5)
+    to [open] (6, 2.5) to [short] (5.5, 2.5)
+    to [open] (6.5, 5.5)
+    to [open] (6.5, 6) to [open, l=$14V$] (6.5, 6) to [short, o-] (6.5, 5.5)
+    to [R, l=$10\Omega$] (6.5, 3)
+    to [open] (6.5, 2.5) node [npn] {} to [open] (6.5, 2)
+    to [R, l=$10\Omega$] (6.5, 0)
+    ;
+
+    \draw(9, 0) node [ground] {};
+    \draw(11.5, 0) node [ground] {};
+    \draw(9, 0)
+    to [battery, l_=$V_{TH}$] (9, 2)
+    to [R, l=$R_{TH}$] (11, 2)
+    to [open] (11.5, 2)
+    node [npn] {}
+    to [open] (11.5, 0)
+    to [R, l_=$10\Omega$] (11.5, 1.25)
+    to [open] (11.5, 2.5)
+    to [R, l_=$10\Omega$] (11.5, 5.5)
+    to [open] (11.5, 6) to [open, l=$14V$] (11.5, 6) to [short, o-] (11.5, 5.5)
+    ;
+  \end{circuitikz}
+\end{figure}
+
+Se calcula $V_{TH}$ y $R_{TH}$:
+
+\begin{align*}
+  V_{TH} &= \frac{14V \cdot 513\Omega}{513\Omega + 610\Omega} = \frac{7182}{1123} \approx 6.40V
+  &
+  R_{TH} &= \frac{513\Omega \cdot 610\Omega}{513\Omega + 610\Omega} = \frac{312930}{1123} \approx 278.66\Omega
+\end{align*}
+
+Se obtienen 2 ecuaciones para relacionar $I_B$, $I_C$ y $V_{CE}$:
+
+\begin{align}
+  14 - 10 I_C - V_CE - 10 I_C = 0 &\Rightarrow 14 - 20 I_C = V_CE
+  \label{p1:a:vce-ic}
+  \\
+  V_{TH} - R_{TH} I_B - V_{BE} - 10 I_C = 0 &\Rightarrow \frac{7182}{1123} - 0.7 - \frac{312930}{1123} I_B - 10 I_C = 0
+  \label{p1:a:ib-ic}
+\end{align}
+
+Se prueba para los distintos valores de $I_B$ de la gráfica hasta obtener una
+igualdad.
+
+Se sabe que para $I_B = 2.5mA$, $I_C = 0.5A$, entonces en \ref{p1:a:ib-ic}:
+\begin{equation*}
+  \frac{7182}{1123} - 0.7 - \frac{312930}{1123} \cdot 0.0025 - 10 \cdot 0.5 \approx -0.001269
+\end{equation*}
+
+Como el valor es suficientemente cercano a 0, que es lo que se espera, se
+utilizan estos valores para $I_B$ e $I_C$.
+
+Ahora en \ref{p1:a:vce-ic}:
+
+\begin{equation*}
+  14 - 20 \cdot 0.5 = 4
+\end{equation*}
+
+Nuevamente se comprueba que el valor de $4V$ existe para la curva utilizada, con
+esto se concluyen los valores de $I_C = 0.5A$ y $V_{CE} = 4V$.
+
+
+\usubsection{Solución parte b}
+
+De la parte a ya tenemos la ecuación de la recta de carga DC:
+
+\begin{equation*}
+  14 - 20 I_C = V_{CE}
+\end{equation*}
+
+Ahora obtenemos la ecuación de carga AC:
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=0.5]
+      \draw(0, 0) node [ground] {}
+      to [american current source, l=$i_i$] (0, 3)
+      to [short] (2, 3)
+      to [open] (2, 0) node [ground] {}
+      to [R, l_=$R_1$] (2, 3)
+      to [short] (4.5, 3)
+      to [open] (4.5, 0) node [ground] {}
+      to [R, l_=$R_2$] (4.5, 3)
+      to [short] (5.5, 3)
+      to [open] (7, 3)
+      node [npn] {} to [open] (7, 2.2)
+      to [short] (7, 0) node [ground] {}
+      to [open] (7, 3.7)
+      to [short] (7, 4.6)
+      to [short] (9, 4.6)
+      to [open] (9, 0) node[ground] {}
+      to [R, l_=$10\Omega$] (9, 4.6)
+      to [short] (12, 4.6)
+      to [R, l=$10\Omega$] (12, 0) node[ground] {}
+      ;
+
+      \draw(17, 0) node [ground] {}
+      to [american current source, l=$i_i$] (17, 3)
+      to [short] (19, 3)
+      to [open] (19, 0) node [ground] {}
+      to [R, l_=$R_1||R_2$] (19, 3)
+      to [short] (21, 3)
+      to [open] (22.5, 3) node [npn] {}
+      to [open] (22.5, 2.2) to [short] (22.5, 0) node [ground] {}
+      to [open] (22.5, 3.7) to [short] (22.5, 4.6)
+      to [short] (24.5, 4.6)
+      to [R, l=$5\Omega$] (24.5, 0) node [ground] {}
+      ;
+    \end{circuitikz}
+\end{figure}
+
+\begin{equation*}
+  5 i_c + v_{ce} = 0
+\end{equation*}
+
+Se utiliza el siguiente cambio de variable:
+
+\begin{align*}
+  i_C &= I_{CQ} + i_c \Rightarrow i_c = i_C - I_{CQ} \\
+  v_{CE} &= V_{CEQ} + v_{ce} \Rightarrow v_{ce} = v_{CE} - V_{CEQ}
+\end{align*}
+
+Se aplica el concepto de máxima excurción simétrica, $i_C = 2 I_{CQ}$ y
+$v_{ce} = 0$:
+
+\begin{align*}
+  5 i_c + v_{ce} &= 0 \\
+  5 (i_C - I_{CQ}) + v_{CE} - V_{CEQ} &= 0 \\
+  5 I_{CQ} &= V_{CEQ}
+\end{align*}
+
+\begin{align*}
+  14 - 20 I_{CQ} &= V_{CEQ} \\
+  14 - 20 I_{CQ} &= 5 I_{CQ} \\
+  I_{CQ} &= \frac{14}{25} = 0.56 A \\
+  V_{CEQ} &= 5 I_{CQ} = \frac{14}{5} = 2.8V
+\end{align*}
+
+Por lo tanto el punto de operación para máxima excursión simétrica se da cuando
+$I_{CQ} = 0.56A$ y $V_{CEQ} = 2.8V$, este punto corresponde a la curva para
+$I_B = 3mA$. Sabemos que $\beta = \frac{I_C}{I_B} = \frac{560}{3} \approx 187$.
+
+Entonces obtenemos la ecuación para $R1$ y $R2$ (similar a la parte a, solo que
+ahora desconocemos los valores de $R1$ y $R2$):
+
+\begin{align*}
+  V_{TH} - R_{TH} \cdot I_B - V_{BE} - 10 I_C &= 0 \\
+  V_{TH} - R_{TH} \cdot \frac{I_C}{\beta} - V_{BE} - 10 I_C &= 0 \\
+  V_{TH} - V_{BE} &= I_C \left( 10 + \frac{R_{TH}}{\beta} \right) \\
+  \frac{V_{TH} - V_{BE}}{10 + \frac{R_{TH}}{\beta}} &= I_C
+\end{align*}
+
+Acá podemos aplicar el rechazo de $\beta$ si aseguramos que
+$\frac{R_{TH}}{\beta} = 1$:
+
+\begin{align*}
+  \frac{V_{TH} - V_{BE}}{11} &= I_C \\
+  \frac{14 R_2}{R1 + R_2} &= 0.56 \cdot 11 + 0.7 = 6.86 \\
+  14 R_2 &= 6.86 ( R_1 + R_2 ) \\
+  R_2 (14 - 6.86)&= 6.86 R_1 \\
+  R_2 &= \frac{49}{51} R_1
+\end{align*}
+
+Como ejemplo se da $R_2 = 300\Omega$ y $R_1 = 288\Omega$.

@@ -11,3 +11,76 @@
 %   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 %   See the License for the specific language governing permissions and
 %   limitations under the License.
+
+\usection{Problema 1}
+
+\noindent 1. El transistor del crcuito mostrado, se comporta conforme a la familia de
+curvas características mostradas en la gráfica.
+
+a. (6 ptos) Encuentre los valores de $I_C$ y $V_{CE}$ si $R1 = 513\Omega$ y
+$R2 = 610\Omega$.
+
+b. (6.5 ptos) Encuentre los valores requeridos de $R1$ y $R2$ para lograr una
+máxima excursión simétrica.
+
+\begin{figure}[H]
+  \centering
+  \begin{circuitikz}
+    \draw(0, 0) node [ground] {};
+
+    \draw(0, 0)
+    to [american current source, l=$i_i$] (0, 3)
+    to [short] (3, 3)
+    to [open] (4.5, 3)
+    to [open, l=$\beta$] (4.5, 3)
+    ;
+
+    \draw(3.8, 3) node [npn] {};
+
+    \draw(3.8, 6.5)
+    to [open, l=$Vcc1$] (3.8, 6.5)
+    to [short, o-] (3.8, 6)
+    to [R, l=$RC$] (3.8, 3.5)
+    to [open] (3.8, 2.5)
+    to [R, l=$RE$] (3.8, 0)
+    to [open] (3.8, -0.5) to [open, l=$Vcc2$] (3.8, -0.5) to [short, o-] (3.8, 0)
+    to [short] (2, 0)
+    to [R, l=$R2$] (2, 2.5)
+    to [short] (2, 3.5)
+    to [R, l=$R1$] (2, 6)
+    to [short] (3.8, 6)
+    ;
+
+    \draw(3.8, 2.2)
+    to [short] (5.5, 2.2)
+    to [short] (5.5, 1.3)
+    to [C, l=$CE \rightarrow \infty$] (5.5, 0)
+    to [short] (3.8, 0)
+    ;
+
+    \draw(3.8, 3.6)
+    to [C, l=$Cc \rightarrow \infty$] (9, 3.6)
+    to [R, l=$RL$, i=$iL$] (9, 0)
+    ;
+    \draw(9, 0) node [ground] {};
+
+  \end{circuitikz}
+
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c | c | c | c | c}
+      $Vcc1$  &
+      $Vcc2$  &
+      $RC$    &
+      $RE$    &
+      $RL$
+      \\ \hline
+      $7V$ &
+      $-7V$ &
+      $10\Omega$ &
+      $10\Omega$ &
+      $10\Omega$
+    \end{tabular}
+  \end{table}
+\end{figure}

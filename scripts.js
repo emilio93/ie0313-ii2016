@@ -14,34 +14,6 @@ $(document).ready(function() {
     showPage(window.location.hash.substr(1));
   });
 
-  function loadInicio() {
-    $('#readme').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
-    $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/readme.md', {})
-    .then(function(data) {$('#readme').html(marked(data));})
-    .fail(function() {$('#readme').html(marked('## Inicio\nNo se pudo cargar contenido.'));})
-  }
-
-  function loadTrabajos() {
-    $('#readme-trabajos').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
-    $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/trabajos/readme.md', {})
-    .then(function(data) {$('#readme-trabajos').html(marked(data));})
-    .fail(function() {$('#readme-trabajos').html(marked('## Trabajos\nNo se pudo cargar contenido.'));})
-  }
-
-  function loadTareas() {
-    $('#readme-tareas').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
-    $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/tareas/readme.md', {})
-    .then(function(data) {$('#readme-tareas').html(marked(data));})
-    .fail(function() {$('#readme-tareas').html(marked('## Tareas\nNo se pudo cargar contenido.'));})
-  }
-
-  function loadMaterial() {
-    $('#readme-material').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
-    $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/material/readme.md', {})
-    .then(function(data) {$('#readme-material').html(marked(data));})
-    .fail(function() {$('#readme-material').html(marked('## Material\nNo se pudo cargar contenido.'));})
-  }
-
   function loadLicencia() {
     $('#license').html('<p class="text-center"><i class="fa fa-spinner fa-spin"></i></span>');
     $.ajax('https://raw.githubusercontent.com/emilio93/ie0313-ii2016/master/LICENSE', {})

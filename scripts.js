@@ -1,8 +1,4 @@
 $(document).ready(function() {
-  loadInicio();
-  loadTrabajos();
-  loadTareas();
-  loadMaterial();
   loadLicencia();
   showPage();
 
